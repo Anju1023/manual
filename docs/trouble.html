@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>トラブル対応編 - パン製造システムマニュアル</title>
+		<meta
+			name="description"
+			content="パン製造システムのトラブル対応と緊急時の対処法。エラー解決から復旧手順まで詳しく解説します。"
+		/>
+
+		<!-- 外部CSS読み込み -->
+		<link rel="stylesheet" href="../assets/css/style.css" />
+
+		<!-- ファビコン -->
+		<link
+			rel="icon"
+			href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>"
+		/>
+	</head>
+	<body class="trouble">
+		<div class="container">
+			<!-- Header -->
+			<header class="header">
+				<div class="breadcrumb">
+					<a href="index.html">🏠 トップページ</a> >
+					<span>🔧 トラブル対応編</span>
+				</div>
+				<h1>🔧 トラブル対応編</h1>
+				<p>緊急時の対処法と復旧手順</p>
+			</header>
+
+			<!-- Emergency Banner -->
+			<div
+				class="important-notice"
+				style="
+					background: linear-gradient(135deg, #e17055, #ff7675);
+					animation: pulse 2s infinite;
+				"
+			>
+				<h3>🚨 緊急時はまず冷静に！</h3>
+				<p>
+					パニックにならず、以下の手順に従って対応してください。<br />
+					<strong
+						>分からない場合は無理をせず、すぐに上席者に連絡してください。</strong
+					>
+				</p>
+			</div>
+
+			<!-- Navigation -->
+			<nav class="page-nav">
+				<ul>
+					<li>
+						<a href="#emergency" onclick="showSection('emergency')"
+							>🆘 緊急時対応</a
+						>
+					</li>
+					<li>
+						<a href="#common-errors" onclick="showSection('common-errors')"
+							>❌ よくあるエラー</a
+						>
+					</li>
+					<li>
+						<a href="#system-recovery" onclick="showSection('system-recovery')"
+							>🔄 システム復旧</a
+						>
+					</li>
+					<li>
+						<a href="#prevention" onclick="showSection('prevention')"
+							>🛡️ トラブル予防</a
+						>
+					</li>
+					<li><a href="index.html">🏠 トップページへ</a></li>
+				</ul>
+			</nav>
+
+			<!-- Main Content -->
+			<main class="main-content">
+				<!-- Emergency Section -->
+				<section id="emergency" class="section active">
+					<h2><span class="icon">🆘</span>緊急時対応フロー</h2>
+
+					<div class="tip">
+						<h4>⏰ 緊急事態の定義</h4>
+						<p>
+							以下の状況は緊急事態として即座に対応が必要です：システム完全停止、データ消失、大量エラー発生、製造ライン停止につながる問題
+						</p>
+					</div>
+
+					<h3>🚨 第一段階：緊急対応（最初の5分）</h3>
+					<div class="function-card">
+						<h4>📋 即座に実行すること</h4>
+						<ol style="line-height: 2; font-size: 1.1rem">
+							<li>
+								<strong style="color: #e17055">🛑 作業を一時停止</strong>
+								<ul style="margin: 10px 0 15px 20px">
+									<li>現在の作業を中断し、状況を悪化させる操作を避ける</li>
+									<li>他のスタッフに状況を伝達</li>
+								</ul>
+							</li>
+							<li>
+								<strong style="color: #e17055">📸 エラー内容の記録</strong>
+								<ul style="margin: 10px 0 15px 20px">
+									<li>エラーメッセージのスクリーンショット撮影</li>
+									<li>直前に行った操作をメモ</li>
+									<li>発生時刻を記録</li>
+								</ul>
+							</li>
+							<li>
+								<strong style="color: #e17055">📞 上席者に即座に連絡</strong>
+								<ul style="margin: 10px 0 15px 20px">
+									<li>システム管理者：内線123</li>
+									<li>製造責任者：内線456</li>
+									<li>本社システム部：03-1234-5678</li>
+								</ul>
+							</li>
+						</ol>
+					</div>
+
+					<h3>📋 第二段階：状況確認（5-15分）</h3>
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>🔍 影響範囲の特定</h4>
+							<ul style="line-height: 1.8">
+								<li>どのシートが影響を受けているか</li>
+								<li>どの店舗のデータが関係するか</li>
+								<li>製造計画への影響の程度</li>
+								<li>当日の作業継続可能性</li>
+							</ul>
+						</div>
+
+						<div class="function-card">
+							<h4>📊 データ整合性の確認</h4>
+							<ul style="line-height: 1.8">
+								<li>バックアップファイルの最終更新日時</li>
+								<li>失われたデータの特定</li>
+								<li>復旧に必要な作業時間の見積もり</li>
+								<li>手作業での代替可能性</li>
+							</ul>
+						</div>
+					</div>
+
+					<h3>🔧 第三段階：応急処置（15-30分）</h3>
+					<div class="function-card">
+						<h4>⚡ 即座に試せる対処法</h4>
+						<ol style="line-height: 1.8">
+							<li>
+								<strong>Excelの再起動</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>Ctrl+S で強制保存を試行</li>
+									<li>Excelを完全終了（タスクマネージャーで確認）</li>
+									<li>ファイルを再度開く</li>
+								</ul>
+							</li>
+							<li>
+								<strong>計算の強制実行</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>Ctrl+Alt+F9 で完全再計算</li>
+									<li>F9 で通常再計算</li>
+									<li>問題のセルでF2→Enter</li>
+								</ul>
+							</li>
+							<li>
+								<strong>マクロの再有効化</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>「コンテンツの有効化」をクリック</li>
+									<li>ファイルを信頼できる場所に移動</li>
+									<li>マクロセキュリティ設定の確認</li>
+								</ul>
+							</li>
+						</ol>
+					</div>
+
+					<h3>🔄 第四段階：復旧作業（30分以降）</h3>
+					<div class="warning">
+						<h4>⚠️ 復旧作業の注意事項</h4>
+						<p>
+							この段階の作業は<span class="highlight"
+								>必ず上席者の指示のもと</span
+							>で実行してください。独断での復旧作業は状況を悪化させる可能性があります。
+						</p>
+					</div>
+
+					<div class="function-card">
+						<h4>📁 バックアップからの復旧手順</h4>
+						<ol style="line-height: 1.8">
+							<li>最新のバックアップファイルを特定</li>
+							<li>現在のファイルを別名で保存（証拠保全）</li>
+							<li>バックアップファイルをコピーして作業ディレクトリに配置</li>
+							<li>バックアップからの差分データを手動で入力</li>
+							<li>全システムの動作確認</li>
+							<li>テスト印刷の実行</li>
+						</ol>
+					</div>
+
+					<div class="tip">
+						<h4>📞 連絡時に伝える情報</h4>
+						<ul>
+							<li>発生時刻と発見者</li>
+							<li>エラーメッセージの正確な内容</li>
+							<li>直前に行った操作</li>
+							<li>影響を受けているシート・機能</li>
+							<li>現在の製造進行状況</li>
+							<li>最新バックアップの日時</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- Common Errors Section -->
+				<section id="common-errors" class="section">
+					<h2><span class="icon">❌</span>よくあるエラーと対処法</h2>
+
+					<div class="tip">
+						<h4>🎯 エラー対応の基本原則</h4>
+						<p>
+							エラーメッセージを正確に読み取り、慌てずに段階的に対処することが重要です。同じエラーでも発生箇所によって対処法が異なる場合があります。
+						</p>
+					</div>
+
+					<h3>🔢 計算エラー系</h3>
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>❌ #N/A エラー</h4>
+							<p>
+								<strong>意味：</strong>検索関数で該当するデータが見つからない
+							</p>
+
+							<h4 style="margin-top: 15px">🔍 主な原因</h4>
+							<ul style="line-height: 1.8">
+								<li>商品名や店舗名のスペルミス</li>
+								<li>半角・全角の不一致</li>
+								<li>前後の余分なスペース</li>
+								<li>マスターデータの不整合</li>
+							</ul>
+
+							<h4 style="margin-top: 15px">🔧 対処法</h4>
+							<ol style="line-height: 1.8">
+								<li>検索している値を再確認</li>
+								<li>マスターデータに該当項目があるかチェック</li>
+								<li>TRIM関数で余分なスペースを除去</li>
+								<li>IFERROR関数でエラー表示を制御</li>
+							</ol>
+
+							<div class="syntax" style="margin-top: 10px">
+								修正例：<br />
+								=IFERROR(XLOOKUP(TRIM(A1),商品データ[商品名],商品データ[売価]),"該当なし")
+							</div>
+						</div>
+
+						<div class="function-card">
+							<h4>🔗 #REF! エラー</h4>
+							<p>
+								<strong>意味：</strong>参照先のセルまたは範囲が削除されている
+							</p>
+
+							<h4 style="margin-top: 15px">🔍 主な原因</h4>
+							<ul style="line-height: 1.8">
+								<li>参照先のシートが削除された</li>
+								<li>参照先の行・列が削除された</li>
+								<li>ファイルのリンクが切れた</li>
+								<li>名前付き範囲が削除された</li>
+							</ul>
+
+							<h4 style="margin-top: 15px">🔧 対処法</h4>
+							<ol style="line-height: 1.8">
+								<li><strong>緊急措置：</strong>バックアップからの復旧</li>
+								<li>削除されたシート・範囲の特定</li>
+								<li>参照式の手動修正</li>
+								<li>名前付き範囲の再定義</li>
+							</ol>
+
+							<div class="warning" style="margin-top: 10px">
+								<h4>⚠️ 重要</h4>
+								<p>
+									#REF!エラーは<span class="highlight">データ構造の破損</span
+									>を示すため、必ずバックアップから復旧してください。
+								</p>
+							</div>
+						</div>
+
+						<div class="function-card">
+							<h4>🔢 #VALUE! エラー</h4>
+							<p><strong>意味：</strong>関数に間違ったデータ型が渡されている</p>
+
+							<h4 style="margin-top: 15px">🔍 主な原因</h4>
+							<ul style="line-height: 1.8">
+								<li>数値が必要な箇所に文字列が入力</li>
+								<li>日付形式の不正</li>
+								<li>配列数式の引数ミスマッチ</li>
+								<li>関数の引数が不正</li>
+							</ul>
+
+							<h4 style="margin-top: 15px">🔧 対処法</h4>
+							<ol style="line-height: 1.8">
+								<li>入力データの型を確認</li>
+								<li>VALUE関数で文字列を数値に変換</li>
+								<li>DATE関数で日付を正しく構成</li>
+								<li>関数の引数の順序と型を再確認</li>
+							</ol>
+						</div>
+
+						<div class="function-card">
+							<h4>💥 #NAME? エラー</h4>
+							<p><strong>意味：</strong>関数名や名前付き範囲が認識されない</p>
+
+							<h4 style="margin-top: 15px">🔍 主な原因</h4>
+							<ul style="line-height: 1.8">
+								<li>関数名のスペルミス</li>
+								<li>VBA関数の未読み込み</li>
+								<li>名前付き範囲の未定義</li>
+								<li>マクロの無効化</li>
+							</ul>
+
+							<h4 style="margin-top: 15px">🔧 対処法</h4>
+							<ol style="line-height: 1.8">
+								<li>「コンテンツの有効化」をクリック</li>
+								<li>関数名のスペルを確認</li>
+								<li>名前の管理で名前付き範囲を確認</li>
+								<li>ファイルを再度開き直す</li>
+							</ol>
+						</div>
+					</div>
+
+					<h3>🤖 VBA・マクロエラー系</h3>
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>🛑 実行時エラー '1004'</h4>
+							<p>
+								<strong>意味：</strong
+								>アプリケーション定義またはオブジェクト定義のエラー
+							</p>
+
+							<h4 style="margin-top: 15px">🔧 対処法</h4>
+							<ol style="line-height: 1.8">
+								<li>ファイルを閉じて再度開く</li>
+								<li>Excelを完全に再起動</li>
+								<li>他のExcelファイルがロックしていないか確認</li>
+								<li>ネットワークドライブの接続確認</li>
+							</ol>
+						</div>
+
+						<div class="function-card">
+							<h4>⏸️ マクロが動作しない</h4>
+							<p><strong>症状：</strong>ボタンをクリックしても何も起こらない</p>
+
+							<h4 style="margin-top: 15px">🔧 対処法</h4>
+							<ol style="line-height: 1.8">
+								<li>マクロのセキュリティ設定を確認</li>
+								<li>「開発」タブでマクロの有効性をチェック</li>
+								<li>Alt+F11でVBAエディタを開いてエラー確認</li>
+								<li>ファイルの破損チェック</li>
+							</ol>
+						</div>
+
+						<div class="function-card">
+							<h4>🔄 無限ループ・応答なし</h4>
+							<p><strong>症状：</strong>Excelが応答せず、処理が終わらない</p>
+
+							<h4 style="margin-top: 15px">🔧 緊急対処法</h4>
+							<ol style="line-height: 1.8">
+								<li><strong>Ctrl+Break</strong> で処理を強制中断</li>
+								<li>効果がない場合は<strong>Ctrl+Alt+Delete</strong></li>
+								<li>タスクマネージャーでExcelを強制終了</li>
+								<li>自動回復ファイルから復旧</li>
+							</ol>
+						</div>
+					</div>
+
+					<h3>💾 ファイル・データエラー系</h3>
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>🔒 ファイルが開けない</h4>
+							<p>
+								<strong>症状：</strong
+								>「ファイルが見つかりません」「アクセスが拒否されました」
+							</p>
+
+							<h4 style="margin-top: 15px">🔧 対処法</h4>
+							<ol style="line-height: 1.8">
+								<li>ファイルパスの確認</li>
+								<li>ファイルが他のユーザーに開かれていないか確認</li>
+								<li>読み取り専用で開いてコピーを作成</li>
+								<li>ネットワークドライブの再接続</li>
+								<li>バックアップファイルからの復旧</li>
+							</ol>
+						</div>
+
+						<div class="function-card">
+							<h4>💥 ファイルの破損</h4>
+							<p>
+								<strong>症状：</strong
+								>「ファイルが破損しています」「修復しますか？」
+							</p>
+
+							<h4 style="margin-top: 15px">🔧 対処法</h4>
+							<ol style="line-height: 1.8">
+								<li><strong>修復を試行</strong>（Excelの自動修復機能）</li>
+								<li>
+									修復できない場合は<strong>即座にバックアップを使用</strong>
+								</li>
+								<li>破損ファイルは別名で保存（分析用）</li>
+								<li>上席者に報告して原因調査</li>
+							</ol>
+
+							<div class="warning" style="margin-top: 10px">
+								<h4>⚠️ 絶対禁止</h4>
+								<p>
+									破損したファイルでの作業継続は<span class="highlight"
+										>絶対に避けてください</span
+									>。データ損失が拡大する可能性があります。
+								</p>
+							</div>
+						</div>
+
+						<div class="function-card">
+							<h4>🐌 動作が異常に遅い</h4>
+							<p><strong>症状：</strong>操作の反応が遅い、計算に時間がかかる</p>
+
+							<h4 style="margin-top: 15px">🔧 対処法</h4>
+							<ol style="line-height: 1.8">
+								<li>計算モードを手動に変更</li>
+								<li>他のアプリケーションを終了</li>
+								<li>不要なワークシートを非表示</li>
+								<li>画面更新を無効化（VBA実行中）</li>
+								<li>メモリ不足の場合はPCを再起動</li>
+							</ol>
+						</div>
+					</div>
+				</section>
+
+				<!-- System Recovery Section -->
+				<section id="system-recovery" class="section">
+					<h2><span class="icon">🔄</span>システム復旧手順</h2>
+
+					<div class="important-notice">
+						<h3>⚠️ 復旧作業の重要原則</h3>
+						<p>
+							システム復旧は<span class="highlight"
+								>必ず上席者の指示と監督のもと</span
+							>で実行してください。間違った復旧作業は被害を拡大させる可能性があります。
+						</p>
+					</div>
+
+					<h3>📁 バックアップファイルの特定</h3>
+					<div class="function-card">
+						<h4>🔍 バックアップファイルの場所</h4>
+						<ul style="line-height: 1.8">
+							<li><strong>日次バックアップ：</strong>\\server\backup\daily\</li>
+							<li>
+								<strong>週次バックアップ：</strong>\\server\backup\weekly\
+							</li>
+							<li>
+								<strong>月次バックアップ：</strong>\\server\backup\monthly\
+							</li>
+							<li>
+								<strong>手動バックアップ：</strong>各作業者のローカルフォルダ
+							</li>
+						</ul>
+
+						<h4 style="margin-top: 15px">📅 ファイル命名規則</h4>
+						<div class="syntax">
+							CB商品データ_YYYYMMDD_HHMM.xlsm<br />
+							T納品データ_YYYYMMDD_HHMM.xlsm<br /><br />
+							例：CB商品データ_20240722_0830.xlsm
+						</div>
+					</div>
+
+					<h3>🔧 段階的復旧プロセス</h3>
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>📋 Step 1: 準備作業</h4>
+							<ol style="line-height: 1.8">
+								<li>現在のファイルを別名で保存</li>
+								<li>最新バックアップの日時確認</li>
+								<li>失われるデータの量を把握</li>
+								<li>復旧に必要な時間を見積もり</li>
+								<li>関係者への作業時間通知</li>
+							</ol>
+						</div>
+
+						<div class="function-card">
+							<h4>🔄 Step 2: ファイル復旧</h4>
+							<ol style="line-height: 1.8">
+								<li>バックアップファイルをコピー</li>
+								<li>作業ディレクトリに配置</li>
+								<li>ファイル名を現在のものに変更</li>
+								<li>読み取り専用属性を解除</li>
+								<li>ファイルを開いて内容確認</li>
+							</ol>
+						</div>
+
+						<div class="function-card">
+							<h4>📊 Step 3: データ補完</h4>
+							<ol style="line-height: 1.8">
+								<li>バックアップ以降の変更点を特定</li>
+								<li>手動でデータを再入力</li>
+								<li>関連する計算式の更新</li>
+								<li>全シートの整合性確認</li>
+								<li>テスト計算の実行</li>
+							</ol>
+						</div>
+
+						<div class="function-card">
+							<h4>✅ Step 4: 動作確認</h4>
+							<ol style="line-height: 1.8">
+								<li>各ボタンの動作テスト</li>
+								<li>計算結果の妥当性確認</li>
+								<li>印刷機能のテスト</li>
+								<li>ファイル保存の確認</li>
+								<li>運用再開の承認取得</li>
+							</ol>
+						</div>
+					</div>
+
+					<h3>🔍 データ整合性チェック</h3>
+					<div class="function-card">
+						<h4>📊 確認すべき項目</h4>
+						<ul style="line-height: 1.8">
+							<li><strong>製造数合計：</strong>各店舗の注文数と製造数の一致</li>
+							<li><strong>金額計算：</strong>個数×単価＝合計金額の整合性</li>
+							<li><strong>日付連携：</strong>納品日と製造日の関係</li>
+							<li><strong>在庫計算：</strong>発注量と必要量のバランス</li>
+							<li><strong>店舗データ：</strong>全40店舗のデータ完整性</li>
+						</ul>
+
+						<h4 style="margin-top: 15px">🧮 計算確認方法</h4>
+						<div class="syntax">
+							// 手動確認用の計算例<br />
+							製造数 = SUM(各店舗の注文数)<br />
+							売上 = SUM(個数 × 売価)<br />
+							材料必要量 = 製造数 × レシピ使用量
+						</div>
+					</div>
+
+					<h3>📝 復旧作業記録</h3>
+					<div class="function-card">
+						<h4>📋 必須記録項目</h4>
+						<ul style="line-height: 1.8">
+							<li>障害発生日時と発見者</li>
+							<li>障害の詳細内容とエラーメッセージ</li>
+							<li>使用したバックアップファイルの日時</li>
+							<li>復旧作業の実施者と監督者</li>
+							<li>復旧に要した時間</li>
+							<li>失われたデータの内容と影響</li>
+							<li>再発防止のための対策</li>
+						</ul>
+
+						<div class="tip" style="margin-top: 15px">
+							<h4>💡 記録の重要性</h4>
+							<p>
+								復旧記録は将来の同様トラブルを防ぐための貴重な資料です。詳細に記録して共有しましょう。
+							</p>
+						</div>
+					</div>
+
+					<h3>🔄 運用再開チェックリスト</h3>
+					<div class="function-card">
+						<h4>✅ 再開前確認事項</h4>
+						<ol style="line-height: 1.8">
+							<li>□ 全機能の正常動作確認完了</li>
+							<li>□ データ整合性チェック完了</li>
+							<li>□ バックアップファイル作成完了</li>
+							<li>□ 関係者への復旧完了報告済み</li>
+							<li>□ 今後の予防策の確認済み</li>
+							<li>□ 緊急連絡体制の再確認済み</li>
+						</ol>
+
+						<div class="warning" style="margin-top: 15px">
+							<h4>⚠️ 注意</h4>
+							<p>
+								すべての項目が確認できるまで、<span class="highlight"
+									>本格運用は再開しないでください</span
+								>。
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- Prevention Section -->
+				<section id="prevention" class="section">
+					<h2><span class="icon">🛡️</span>トラブル予防策</h2>
+
+					<div class="tip">
+						<h4>🎯 予防の基本理念</h4>
+						<p>
+							「転ばぬ先の杖」として、日常的な予防策を習慣化することで、重大なトラブルの大部分を未然に防ぐことができます。
+						</p>
+					</div>
+
+					<h3>💾 バックアップ戦略</h3>
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>📅 自動バックアップスケジュール</h4>
+							<ul style="line-height: 1.8">
+								<li>
+									<strong>毎日 06:00：</strong>作業開始前の自動バックアップ
+								</li>
+								<li>
+									<strong>毎日 12:00：</strong>午前作業完了後のバックアップ
+								</li>
+								<li>
+									<strong>毎日 18:00：</strong>1日の作業完了後のバックアップ
+								</li>
+								<li><strong>毎週日曜日：</strong>週次アーカイブバックアップ</li>
+								<li><strong>毎月末：</strong>月次アーカイブバックアップ</li>
+							</ul>
+						</div>
+
+						<div class="function-card">
+							<h4>🎯 手動バックアップのタイミング</h4>
+							<ul style="line-height: 1.8">
+								<li>重要な変更作業の前後</li>
+								<li>新商品登録時</li>
+								<li>価格改定時</li>
+								<li>システム更新時</li>
+								<li>月次・週次作業の前後</li>
+								<li>異常を感じた時</li>
+							</ul>
+						</div>
+
+						<div class="function-card">
+							<h4>📂 バックアップ保管ルール</h4>
+							<ul style="line-height: 1.8">
+								<li>
+									<strong>3-2-1ルール：</strong
+									>3つのコピー、2つの異なる媒体、1つは遠隔地保管
+								</li>
+								<li>
+									<strong>世代管理：</strong>過去30日分の日次バックアップを保持
+								</li>
+								<li><strong>ファイル名：</strong>日時を含む統一命名規則</li>
+								<li><strong>アクセス権：</strong>適切なファイル権限設定</li>
+							</ul>
+						</div>
+					</div>
+
+					<h3>🔍 定期メンテナンス</h3>
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>📅 日次チェック項目</h4>
+							<ul style="line-height: 1.8">
+								<li>ファイルサイズの異常確認</li>
+								<li>計算結果の妥当性チェック</li>
+								<li>エラーメッセージの有無</li>
+								<li>動作速度の確認</li>
+								<li>バックアップの正常完了確認</li>
+							</ul>
+						</div>
+
+						<div class="function-card">
+							<h4>📅 週次チェック項目</h4>
+							<ul style="line-height: 1.8">
+								<li>全シートの動作確認</li>
+								<li>VBA関数の動作テスト</li>
+								<li>データ整合性の確認</li>
+								<li>印刷機能のテスト</li>
+								<li>ファイル容量の監視</li>
+							</ul>
+						</div>
+
+						<div class="function-card">
+							<h4>📅 月次チェック項目</h4>
+							<ul style="line-height: 1.8">
+								<li>システム全体の性能評価</li>
+								<li>バックアップの復旧テスト</li>
+								<li>セキュリティ設定の確認</li>
+								<li>ユーザー権限の見直し</li>
+								<li>ハードウェアの状態確認</li>
+							</ul>
+						</div>
+					</div>
+
+					<h3>⚠️ 危険兆候の早期発見</h3>
+					<div class="function-card">
+						<h4>🚨 注意すべき症状</h4>
+						<ul style="line-height: 1.8">
+							<li>
+								<strong>動作の異常：</strong>普段より計算が遅い、応答が悪い
+							</li>
+							<li><strong>ファイルサイズ：</strong>急激な増加または減少</li>
+							<li><strong>計算結果：</strong>明らかに不自然な数値</li>
+							<li><strong>エラー頻発：</strong>同じエラーが繰り返し発生</li>
+							<li><strong>保存異常：</strong>保存に時間がかかる、失敗する</li>
+							<li><strong>VBA動作：</strong>マクロが不安定、応答しない</li>
+						</ul>
+
+						<div class="warning" style="margin-top: 15px">
+							<h4>⚠️ 早期対応の重要性</h4>
+							<p>
+								これらの症状を発見した場合は、<span class="highlight"
+									>即座に上席者に報告</span
+								>してください。小さな異常が大きなトラブルの前兆である可能性があります。
+							</p>
+						</div>
+					</div>
+
+					<h3>👥 ユーザー教育・訓練</h3>
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>📚 基本教育プログラム</h4>
+							<ul style="line-height: 1.8">
+								<li>新入社員向けシステム研修</li>
+								<li>定期的なセキュリティ教育</li>
+								<li>バックアップ手順の訓練</li>
+								<li>緊急時対応の模擬訓練</li>
+								<li>操作ミス防止の意識向上</li>
+							</ul>
+						</div>
+
+						<div class="function-card">
+							<h4>🎯 スキルレベル別研修</h4>
+							<ul style="line-height: 1.8">
+								<li><strong>初級者：</strong>基本操作と安全ルール</li>
+								<li><strong>中級者：</strong>トラブル対応と予防策</li>
+								<li><strong>上級者：</strong>システム管理と復旧手順</li>
+								<li><strong>管理者：</strong>危機管理と意思決定</li>
+							</ul>
+						</div>
+
+						<div class="function-card">
+							<h4>📋 定期的な知識確認</h4>
+							<ul style="line-height: 1.8">
+								<li>月次の知識確認テスト</li>
+								<li>緊急連絡先の確認</li>
+								<li>操作手順の復習</li>
+								<li>新機能・変更点の共有</li>
+								<li>ベストプラクティスの共有</li>
+							</ul>
+						</div>
+					</div>
+
+					<h3>🏢 組織的な対策</h3>
+					<div class="function-card">
+						<h4>🎯 体制整備</h4>
+						<ul style="line-height: 1.8">
+							<li>
+								<strong>責任者の明確化：</strong>システム管理者、各作業責任者
+							</li>
+							<li><strong>連絡体制：</strong>緊急時連絡網の整備</li>
+							<li><strong>権限管理：</strong>適切なアクセス権限の設定</li>
+							<li><strong>文書管理：</strong>手順書・マニュアルの最新化</li>
+							<li><strong>定期見直し：</strong>システム運用ルールの改善</li>
+						</ul>
+
+						<h4 style="margin-top: 15px">📞 緊急連絡体制</h4>
+						<div
+							style="
+								background: #f8f9fa;
+								padding: 15px;
+								border-radius: 10px;
+								margin-top: 10px;
+							"
+						>
+							<strong>第一連絡先：</strong>システム管理者（内線123）<br />
+							<strong>第二連絡先：</strong>製造責任者（内線456）<br />
+							<strong>第三連絡先：</strong>本社システム部（03-1234-5678）<br />
+							<strong>夜間・休日：</strong>当直責任者（080-1234-5678）
+						</div>
+					</div>
+
+					<div class="tip">
+						<h4>💡 継続的改善</h4>
+						<p>
+							トラブル予防は一度実施すれば終わりではありません。定期的に見直しを行い、新しい脅威や課題に対応していくことが重要です。
+						</p>
+					</div>
+				</section>
+			</main>
+
+			<!-- Emergency Contacts -->
+			<section class="important-notice" style="margin-top: 40px">
+				<h3>📞 緊急連絡先一覧</h3>
+				<div
+					style="
+						display: grid;
+						grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+						gap: 15px;
+						margin-top: 15px;
+					"
+				>
+					<div
+						style="
+							background: rgba(255, 255, 255, 0.2);
+							padding: 15px;
+							border-radius: 10px;
+						"
+					>
+						<strong>システム管理者</strong><br />
+						内線: 123<br />
+						携帯: 090-1234-5678
+					</div>
+					<div
+						style="
+							background: rgba(255, 255, 255, 0.2);
+							padding: 15px;
+							border-radius: 10px;
+						"
+					>
+						<strong>製造責任者</strong><br />
+						内線: 456<br />
+						携帯: 090-2345-6789
+					</div>
+					<div
+						style="
+							background: rgba(255, 255, 255, 0.2);
+							padding: 15px;
+							border-radius: 10px;
+						"
+					>
+						<strong>本社システム部</strong><br />
+						TEL: 03-1234-5678<br />
+						FAX: 03-1234-5679
+					</div>
+					<div
+						style="
+							background: rgba(255, 255, 255, 0.2);
+							padding: 15px;
+							border-radius: 10px;
+						"
+					>
+						<strong>夜間・休日</strong><br />
+						当直: 080-1234-5678<br />
+						警備: 080-2345-6789
+					</div>
+				</div>
+			</section>
+
+			<!-- Quick Links -->
+			<nav class="quick-links">
+				<a href="index.html" class="quick-link"> 🏠 トップページに戻る </a>
+				<a href="basics.html" class="quick-link"> 🔰 基礎知識を確認 </a>
+				<a href="daily.html" class="quick-link"> 📅 日常操作を確認 </a>
+				<a href="functions.html" class="quick-link"> ⚡ 関数解説を確認 </a>
+			</nav>
+
+			<!-- Footer -->
+			<footer class="footer">
+				<p>
+					トラブル対応編 |
+					困った時はまず深呼吸して、このマニュアルを参考に冷静に対応しましょう
+					🛡️
+				</p>
+			</footer>
+		</div>
+
+		<!-- 外部JavaScript読み込み -->
+		<script src="../assets/js/script.js"></script>
+
+		<!-- ページ固有のスクリプト -->
+		<script>
+			// トラブル対応編固有の初期化
+			document.addEventListener('DOMContentLoaded', function () {
+				// パンくずリスト生成
+				if (window.manualSystem) {
+					window.manualSystem.generateBreadcrumb('trouble');
+				}
+
+				// 緊急度判定機能
+				setupEmergencyAssessment();
+
+				// チェックリスト機能
+				setupTroubleCheckList();
+
+				// 緊急時フローチャート
+				setupEmergencyFlowchart();
+
+				// 脈動アニメーション
+				setupPulseAnimation();
+			});
+
+			// 緊急度判定機能
+			function setupEmergencyAssessment() {
+				const assessmentButton = document.createElement('button');
+				assessmentButton.innerHTML = '🚨 緊急度判定';
+				assessmentButton.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #e17055, #ff7675);
+                color: white;
+                border: none;
+                padding: 15px 20px;
+                border-radius: 25px;
+                font-weight: 600;
+                cursor: pointer;
+                z-index: 100;
+                box-shadow: 0 5px 15px rgba(225, 112, 85, 0.3);
+                animation: emergency-pulse 2s infinite;
+            `;
+
+				assessmentButton.addEventListener('click', showEmergencyAssessment);
+				document.body.appendChild(assessmentButton);
+			}
+
+			function showEmergencyAssessment() {
+				const questions = [
+					{
+						question: 'システムは完全に動作しなくなっていますか？',
+						weight: 10,
+					},
+					{
+						question: 'データが消失または破損していますか？',
+						weight: 9,
+					},
+					{
+						question: '製造ラインが停止していますか？',
+						weight: 8,
+					},
+					{
+						question: '複数の店舗に影響が出ていますか？',
+						weight: 7,
+					},
+					{
+						question: '当日の業務継続が困難ですか？',
+						weight: 6,
+					},
+				];
+
+				let score = 0;
+				let currentQuestion = 0;
+
+				const modal = document.createElement('div');
+				modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+            `;
+
+				function showQuestion() {
+					if (currentQuestion >= questions.length) {
+						showResult();
+						return;
+					}
+
+					const q = questions[currentQuestion];
+					modal.innerHTML = `
+                    <div style="
+                        background: white;
+                        padding: 40px;
+                        border-radius: 20px;
+                        max-width: 500px;
+                        text-align: center;
+                        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                    ">
+                        <h3 style="color: #e17055; margin-bottom: 20px;">
+                            緊急度判定 (${currentQuestion + 1}/${
+						questions.length
+					})
+                        </h3>
+                        <p style="margin-bottom: 30px; font-size: 1.2rem; line-height: 1.6;">
+                            ${q.question}
+                        </p>
+                        <div style="display: flex; gap: 20px; justify-content: center;">
+                            <button onclick="answer(true)" style="
+                                background: #ff7675;
+                                color: white;
+                                border: none;
+                                padding: 15px 30px;
+                                border-radius: 25px;
+                                font-size: 1.1rem;
+                                font-weight: 600;
+                                cursor: pointer;
+                            ">はい</button>
+                            <button onclick="answer(false)" style="
+                                background: #74b9ff;
+                                color: white;
+                                border: none;
+                                padding: 15px 30px;
+                                border-radius: 25px;
+                                font-size: 1.1rem;
+                                font-weight: 600;
+                                cursor: pointer;
+                            ">いいえ</button>
+                        </div>
+                    </div>
+                `;
+				}
+
+				window.answer = function (isYes) {
+					if (isYes) {
+						score += questions[currentQuestion].weight;
+					}
+					currentQuestion++;
+					showQuestion();
+				};
+
+				function showResult() {
+					let urgency, color, action;
+
+					if (score >= 30) {
+						urgency = '🚨 最高レベル（即座に対応）';
+						color = '#e17055';
+						action = '全作業を停止し、即座に上席者に連絡してください。';
+					} else if (score >= 20) {
+						urgency = '⚠️ 高レベル（緊急対応）';
+						color = '#fdcb6e';
+						action = '作業を一時停止し、速やかに責任者に報告してください。';
+					} else if (score >= 10) {
+						urgency = '⚡ 中レベル（迅速対応）';
+						color = '#74b9ff';
+						action =
+							'このマニュアルの対処法を試行し、改善しない場合は報告してください。';
+					} else {
+						urgency = '💚 低レベル（通常対応）';
+						color = '#00b894';
+						action =
+							'マニュアルに従って対処し、解決しない場合は相談してください。';
+					}
+
+					modal.innerHTML = `
+                    <div style="
+                        background: white;
+                        padding: 40px;
+                        border-radius: 20px;
+                        max-width: 500px;
+                        text-align: center;
+                        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                    ">
+                        <h3 style="color: ${color}; margin-bottom: 20px;">
+                            ${urgency}
+                        </h3>
+                        <div style="
+                            background: ${color}20;
+                            padding: 20px;
+                            border-radius: 15px;
+                            margin: 20px 0;
+                            border-left: 5px solid ${color};
+                        ">
+                            <p style="margin: 0; font-weight: 600;">${action}</p>
+                        </div>
+                        <div style="margin: 20px 0;">
+                            <p><strong>スコア:</strong> ${score}/50</p>
+                        </div>
+                        <button onclick="this.parentElement.parentElement.remove()" style="
+                            background: ${color};
+                            color: white;
+                            border: none;
+                            padding: 12px 25px;
+                            border-radius: 20px;
+                            font-weight: 600;
+                            cursor: pointer;
+                        ">閉じる</button>
+                    </div>
+                `;
+				}
+
+				showQuestion();
+				document.body.appendChild(modal);
+			}
+
+			// チェックリスト機能
+			function setupTroubleCheckList() {
+				const checklistButton = document.createElement('button');
+				checklistButton.innerHTML = '📋 チェックリスト';
+				checklistButton.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                background: linear-gradient(135deg, #00b894, #00cec9);
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                border-radius: 25px;
+                font-weight: 600;
+                cursor: pointer;
+                z-index: 100;
+                box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
+            `;
+
+				checklistButton.addEventListener('click', showTroubleChecklist);
+				document.body.appendChild(checklistButton);
+			}
+
+			function showTroubleChecklist() {
+				const checklist = [
+					'🛑 作業を一時停止した',
+					'📸 エラーメッセージのスクリーンショットを撮った',
+					'📝 直前の操作をメモした',
+					'📞 上席者に連絡した',
+					'💾 バックアップファイルの場所を確認した',
+					'🔍 影響範囲を特定した',
+					'⏰ 発生時刻を記録した',
+				];
+
+				const modal = document.createElement('div');
+				modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+            `;
+
+				modal.innerHTML = `
+                <div style="
+                    background: white;
+                    padding: 30px;
+                    border-radius: 15px;
+                    max-width: 400px;
+                    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+                ">
+                    <h3 style="color: #2d3436; margin-bottom: 20px; text-align: center;">
+                        🚨 緊急時チェックリスト
+                    </h3>
+                    <div id="checklist-items">
+                        ${checklist
+													.map(
+														(item, index) => `
+                            <label style="
+                                display: flex;
+                                align-items: center;
+                                margin: 15px 0;
+                                padding: 10px;
+                                background: #f8f9fa;
+                                border-radius: 8px;
+                                cursor: pointer;
+                            ">
+                                <input type="checkbox" style="margin-right: 10px; transform: scale(1.2);">
+                                <span>${item}</span>
+                            </label>
+                        `
+													)
+													.join('')}
+                    </div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button onclick="this.parentElement.parentElement.remove()" style="
+                            background: #74b9ff;
+                            color: white;
+                            border: none;
+                            padding: 10px 20px;
+                            border-radius: 20px;
+                            cursor: pointer;
+                            font-weight: 600;
+                        ">閉じる</button>
+                    </div>
+                </div>
+            `;
+
+				document.body.appendChild(modal);
+			}
+
+			// 脈動アニメーション
+			function setupPulseAnimation() {
+				const style = document.createElement('style');
+				style.textContent = `
+                @keyframes pulse {
+                    0% { transform: scale(1); }
+                    50% { transform: scale(1.05); }
+                    100% { transform: scale(1); }
+                }
+                
+                @keyframes emergency-pulse {
+                    0% { box-shadow: 0 5px 15px rgba(225, 112, 85, 0.3); }
+                    50% { box-shadow: 0 10px 25px rgba(225, 112, 85, 0.6); }
+                    100% { box-shadow: 0 5px 15px rgba(225, 112, 85, 0.3); }
+                }
+            `;
+				document.head.appendChild(style);
+			}
+
+			// 緊急時フローチャート表示
+			function setupEmergencyFlowchart() {
+				const flowchartButton = document.createElement('button');
+				flowchartButton.innerHTML = '🔄 対応フロー';
+				flowchartButton.style.cssText = `
+                position: fixed;
+                bottom: 80px;
+                left: 20px;
+                background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                border-radius: 25px;
+                font-weight: 600;
+                cursor: pointer;
+                z-index: 100;
+                box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+            `;
+
+				flowchartButton.addEventListener('click', showEmergencyFlowchart);
+				document.body.appendChild(flowchartButton);
+			}
+
+			function showEmergencyFlowchart() {
+				const modal = document.createElement('div');
+				modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                padding: 20px;
+            `;
+
+				modal.innerHTML = `
+                <div style="
+                    background: white;
+                    padding: 30px;
+                    border-radius: 15px;
+                    max-width: 600px;
+                    max-height: 80vh;
+                    overflow-y: auto;
+                    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+                ">
+                    <h3 style="color: #2d3436; margin-bottom: 20px; text-align: center;">
+                        🚨 緊急時対応フローチャート
+                    </h3>
+                    <div style="text-align: center; line-height: 2;">
+                        <div style="background: #ff7675; color: white; padding: 10px; border-radius: 10px; margin: 10px 0;">
+                            🚨 問題発生
+                        </div>
+                        ↓
+                        <div style="background: #fdcb6e; color: white; padding: 10px; border-radius: 10px; margin: 10px 0;">
+                            🛑 作業停止・状況確認
+                        </div>
+                        ↓
+                        <div style="background: #74b9ff; color: white; padding: 10px; border-radius: 10px; margin: 10px 0;">
+                            📸 エラー記録・スクリーンショット
+                        </div>
+                        ↓
+                        <div style="background: #a29bfe; color: white; padding: 10px; border-radius: 10px; margin: 10px 0;">
+                            📞 上席者に即座に連絡
+                        </div>
+                        ↓
+                        <div style="background: #00cec9; color: white; padding: 10px; border-radius: 10px; margin: 10px 0;">
+                            🔧 指示に従って対処
+                        </div>
+                        ↓
+                        <div style="background: #00b894; color: white; padding: 10px; border-radius: 10px; margin: 10px 0;">
+                            ✅ 復旧確認・運用再開
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button onclick="this.parentElement.parentElement.remove()" style="
+                            background: #74b9ff;
+                            color: white;
+                            border: none;
+                            padding: 10px 20px;
+                            border-radius: 20px;
+                            cursor: pointer;
+                            font-weight: 600;
+                        ">閉じる</button>
+                    </div>
+                </div>
+            `;
+
+				document.body.appendChild(modal);
+			}
+		</script>
+	</body>
+</html>

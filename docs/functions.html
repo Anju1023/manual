@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>関数解説編 - パン製造システムマニュアル</title>
+		<meta
+			name="description"
+			content="パン製造システムで使用されている関数の詳細解説。技術的な理解を深めたい方向けの専門資料です。"
+		/>
+
+		<!-- 外部CSS読み込み -->
+		<link rel="stylesheet" href="../assets/css/style.css" />
+
+		<!-- ファビコン -->
+		<link
+			rel="icon"
+			href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"
+		/>
+	</head>
+	<body class="functions">
+		<div class="container">
+			<!-- Header -->
+			<header class="header">
+				<div class="breadcrumb">
+					<a href="index.html">🏠 トップページ</a> > <span>⚡ 関数解説編</span>
+				</div>
+				<h1>⚡ 関数解説編</h1>
+				<p>システムで使用されている関数の技術的解説</p>
+			</header>
+
+			<!-- Navigation -->
+			<nav class="page-nav">
+				<ul>
+					<li>
+						<a
+							href="#important-functions"
+							onclick="showSection('important-functions')"
+							>🔥 重要関数</a
+						>
+					</li>
+					<li>
+						<a
+							href="#lookup-functions"
+							onclick="showSection('lookup-functions')"
+							>🔍 検索関数</a
+						>
+					</li>
+					<li>
+						<a href="#dynamic-arrays" onclick="showSection('dynamic-arrays')"
+							>📊 動的配列</a
+						>
+					</li>
+					<li>
+						<a
+							href="#custom-functions"
+							onclick="showSection('custom-functions')"
+							>🔧 カスタム関数</a
+						>
+					</li>
+					<li><a href="trouble.html">🚨 トラブル対応編へ</a></li>
+				</ul>
+			</nav>
+
+			<!-- Main Content -->
+			<main class="main-content">
+				<!-- Important Functions Section -->
+				<section id="important-functions" class="section active">
+					<h2><span class="icon">🔥</span>重要な関数一覧</h2>
+
+					<div class="warning">
+						<h4>⚠️ 関数変更の禁止</h4>
+						<p>
+							以下で紹介する関数は、システムの根幹を支える重要な計算式です。<span
+								class="highlight"
+								>絶対に変更・削除しないでください</span
+							>。
+						</p>
+					</div>
+
+					<h3>📅 日付・時間関数</h3>
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>📅 TODAY()</h4>
+							<div class="syntax">=TODAY()</div>
+							<p><strong>機能：</strong>現在の日付を返します。</p>
+							<p><strong>使用例：</strong>納品日の自動計算、消費期限の算出</p>
+							<p>
+								<strong>注意：</strong
+								>毎日自動で更新されるため、固定日付が必要な場合は使用しません。
+							</p>
+
+							<h4 style="margin-top: 15px">実際の使用例</h4>
+							<div class="syntax">
+								// 昼間用シートのA2セル<br />
+								=TODAY()+$I$1<br />
+								// 今日から指定日数後の日付を計算
+							</div>
+						</div>
+
+						<div class="function-card">
+							<h4>🕒 NOW()</h4>
+							<div class="syntax">=NOW()</div>
+							<p><strong>機能：</strong>現在の日付と時刻を返します。</p>
+							<p><strong>使用例：</strong>作業記録のタイムスタンプ</p>
+							<p><strong>違い：</strong>TODAY()は日付のみ、NOW()は時刻も含む</p>
+
+							<h4 style="margin-top: 15px">実際の使用例</h4>
+							<div class="syntax">
+								// 伝票用シートのA2セル<br />
+								=NOW()<br />
+								// 明細書作成時刻の記録
+							</div>
+						</div>
+					</div>
+
+					<h3>🔢 計算関数</h3>
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>➕ SUM()</h4>
+							<div class="syntax">=SUM(範囲)</div>
+							<p><strong>機能：</strong>指定した範囲の数値を合計します。</p>
+							<p><strong>使用例：</strong>各店舗の注文数合計、製造数合計</p>
+
+							<h4 style="margin-top: 15px">実際の使用例</h4>
+							<div class="syntax">
+								// 伝票用シートのE4セル<br />
+								=SUM(E5:E45)<br />
+								// 全店舗の合計金額を計算
+							</div>
+						</div>
+
+						<div class="function-card">
+							<h4>🔢 COUNT / COUNTA</h4>
+							<div class="syntax">=COUNT(範囲) / =COUNTA(範囲)</div>
+							<p><strong>COUNT：</strong>数値のセルをカウント</p>
+							<p><strong>COUNTA：</strong>空白以外のセルをカウント</p>
+							<p><strong>使用例：</strong>商品数のカウント、注文店舗数の集計</p>
+						</div>
+					</div>
+
+					<h3>🔀 条件関数</h3>
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>🔀 IF()</h4>
+							<div class="syntax">=IF(条件, 真の場合, 偽の場合)</div>
+							<p><strong>機能：</strong>条件によって異なる値を返します。</p>
+
+							<h4 style="margin-top: 15px">システム内での使用例</h4>
+							<div class="syntax">
+								=IF(並べる表!$B$2:$H$2=$A$2,値,"") //
+								日付が一致する場合のみ値を表示
+							</div>
+
+							<p><strong>応用例：</strong></p>
+							<ul style="margin-top: 10px">
+								<li>注文数が0の場合は空白表示</li>
+								<li>消費期限が過ぎた商品の警告表示</li>
+								<li>在庫不足時のアラート</li>
+							</ul>
+						</div>
+
+						<div class="function-card">
+							<h4>🛡️ IFERROR()</h4>
+							<div class="syntax">=IFERROR(計算式, エラー時の値)</div>
+							<p>
+								<strong>機能：</strong>エラーが発生した場合に指定した値を表示
+							</p>
+
+							<h4 style="margin-top: 15px">実際の使用例</h4>
+							<div class="syntax">
+								// 昼間用シートのA4セル<br />
+								=IFERROR(LastRowValues(並べる表!$A$4),"")<br />
+								// エラー時は空白を表示
+							</div>
+
+							<p>
+								<strong>重要性：</strong
+								>エラー表示を防ぎ、見た目を整える重要な関数
+							</p>
+						</div>
+					</div>
+
+					<h3>📊 集計関数</h3>
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>📈 SUMIF / SUMIFS</h4>
+							<div class="syntax">
+								=SUMIF(範囲, 条件, 合計範囲)<br />=SUMIFS(合計範囲, 条件範囲1,
+								条件1, ...)
+							</div>
+							<p><strong>SUMIF：</strong>単一条件での条件付き合計</p>
+							<p><strong>SUMIFS：</strong>複数条件での条件付き合計</p>
+							<p>
+								<strong>使用例：</strong>特定商品の合計数、特定店舗の売上合計
+							</p>
+						</div>
+
+						<div class="function-card">
+							<h4>📊 COUNTIF / COUNTIFS</h4>
+							<div class="syntax">
+								=COUNTIF(範囲, 条件)<br />=COUNTIFS(条件範囲1, 条件1, ...)
+							</div>
+							<p><strong>機能：</strong>条件に合致するセルの数をカウント</p>
+							<p>
+								<strong>使用例：</strong>注文のある店舗数、特定商品の注文店舗数
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- Lookup Functions Section -->
+				<section id="lookup-functions" class="section">
+					<h2><span class="icon">🔍</span>検索・参照関数</h2>
+
+					<div class="tip">
+						<h4>💡 検索関数の重要性</h4>
+						<p>
+							検索関数は、商品マスターから価格を取得したり、店舗名から店舗番号を検索したりする際に不可欠な関数です。システムの自動化を支える重要な機能です。
+						</p>
+					</div>
+
+					<h3>🚀 XLOOKUP（新世代の検索関数）</h3>
+					<div class="function-card">
+						<h4>⚡ XLOOKUP の基本構文</h4>
+						<div class="syntax">
+							=XLOOKUP(検索値, 検索配列, 戻り配列, [見つからない場合],
+							[一致モード], [検索モード])
+						</div>
+
+						<h4>📋 パラメータ詳細</h4>
+						<ul style="line-height: 1.8">
+							<li><strong>検索値：</strong>探したい値</li>
+							<li><strong>検索配列：</strong>検索値を探す範囲</li>
+							<li><strong>戻り配列：</strong>結果として返したい値の範囲</li>
+							<li>
+								<strong>見つからない場合：</strong
+								>エラー時に表示する値（省略可）
+							</li>
+							<li>
+								<strong>一致モード：</strong>完全一致、近似一致の指定（省略可）
+							</li>
+							<li>
+								<strong>検索モード：</strong
+								>最初から、最後からの検索指定（省略可）
+							</li>
+						</ul>
+
+						<h4 style="margin-top: 15px">システム内での実際の使用例</h4>
+						<div class="syntax">
+							// 伝票用シートのE3セル<br />
+							=XLOOKUP(ANCHORARRAY(E2),ローゼン店舗マスター[店舗番号],ローゼン店舗マスター[店舗名])<br />
+							// 店舗番号から店舗名を検索
+						</div>
+					</div>
+
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>🆚 VLOOKUP との違い</h4>
+							<p><strong>VLOOKUP の制限：</strong></p>
+							<ul>
+								<li>検索列は表の左端のみ</li>
+								<li>列番号で結果指定（分かりにくい）</li>
+								<li>右方向の検索のみ</li>
+							</ul>
+
+							<p><strong>XLOOKUP の改善点：</strong></p>
+							<ul>
+								<li>任意の列で検索可能</li>
+								<li>範囲指定で結果指定（分かりやすい）</li>
+								<li>左右どちらの方向でも検索可能</li>
+								<li>エラーハンドリングが簡単</li>
+							</ul>
+						</div>
+
+						<div class="function-card">
+							<h4>🔍 INDEX + MATCH の組み合わせ</h4>
+							<div class="syntax">
+								=INDEX(戻り範囲, MATCH(検索値, 検索範囲, 0))
+							</div>
+							<p>
+								XLOOKUP が使えない古いExcelでは、INDEX と MATCH
+								を組み合わせて同様の機能を実現します。
+							</p>
+
+							<h4 style="margin-top: 15px">使用例</h4>
+							<div class="syntax">
+								=INDEX(商品データ[売価], MATCH("食パン", 商品データ[商品名],
+								0))<br />
+								// 商品名「食パン」の売価を検索
+							</div>
+						</div>
+					</div>
+
+					<h3>🔄 INDIRECT（間接参照）</h3>
+					<div class="function-card">
+						<h4>📍 INDIRECT の機能</h4>
+						<div class="syntax">=INDIRECT(参照文字列)</div>
+						<p>
+							<strong>機能：</strong
+							>文字列で指定されたセル参照を実際の参照に変換
+						</p>
+
+						<h4 style="margin-top: 15px">使用例</h4>
+						<div class="syntax">
+							=INDIRECT("商品データ!A" & ROW())<br />
+							// 現在の行番号に応じて動的にセル参照を変更
+						</div>
+
+						<p>
+							<strong>注意点：</strong
+							>計算が重くなるため、大量使用は避けてください。
+						</p>
+					</div>
+
+					<h3>📏 OFFSET（相対参照）</h3>
+					<div class="function-card">
+						<h4>🎯 OFFSET の機能</h4>
+						<div class="syntax">
+							=OFFSET(基準セル, 行のオフセット, 列のオフセット, [高さ], [幅])
+						</div>
+						<p>
+							<strong>機能：</strong
+							>基準セルから指定した行・列だけずれた位置のセルを参照
+						</p>
+
+						<h4 style="margin-top: 15px">パラメータ説明</h4>
+						<ul style="line-height: 1.8">
+							<li><strong>基準セル：</strong>基準となるセル</li>
+							<li><strong>行のオフセット：</strong>基準から何行ずらすか</li>
+							<li><strong>列のオフセット：</strong>基準から何列ずらすか</li>
+							<li><strong>高さ・幅：</strong>参照する範囲のサイズ（省略可）</li>
+						</ul>
+
+						<p>
+							<strong>使用例：</strong>動的な範囲指定、可変サイズのテーブル参照
+						</p>
+					</div>
+				</section>
+
+				<!-- Dynamic Arrays Section -->
+				<section id="dynamic-arrays" class="section">
+					<h2><span class="icon">📊</span>動的配列関数</h2>
+
+					<div class="tip">
+						<h4>🚀 Excel 365の革命</h4>
+						<p>
+							動的配列関数は、Excel
+							365で導入された新機能です。一つの数式で複数の結果を返し、データが変更されると自動で配列サイズが調整されます。
+						</p>
+					</div>
+
+					<h3>🎯 FILTER（データフィルタ）</h3>
+					<div class="function-card">
+						<h4>🔍 FILTER の基本構文</h4>
+						<div class="syntax">=FILTER(配列, 条件, [空の場合])</div>
+
+						<h4>📋 パラメータ詳細</h4>
+						<ul style="line-height: 1.8">
+							<li><strong>配列：</strong>フィルタリングしたいデータ範囲</li>
+							<li><strong>条件：</strong>TRUE/FALSEで判定される条件式</li>
+							<li>
+								<strong>空の場合：</strong>条件に合うデータがない時の表示値
+							</li>
+						</ul>
+
+						<h4 style="margin-top: 15px">システム内での実際の使用例</h4>
+						<div class="syntax">
+							// 昼間用シートのB4セル<br />
+							=IF(_xlws.FILTER(LastRowValues(並べる表!$B$4:$H$4,並べる表!B:H),並べる表!$B$2:$H$2=$A$2)=0,"",_xlws.FILTER(...))<br />
+							// 今日の日付に該当するデータのみをフィルタリング
+						</div>
+
+						<h4 style="margin-top: 15px">応用例</h4>
+						<div class="syntax">
+							// 特定の商品カテゴリのみを表示<br />
+							=FILTER(商品データ[商品名:売価], 商品データ[カテゴリ]="食パン")<br /><br />
+							// 注文数が0より大きい店舗のみを表示<br />
+							=FILTER(店舗データ[店舗名], 店舗データ[注文数]>0)
+						</div>
+					</div>
+
+					<h3>📊 SORT（データ並び替え）</h3>
+					<div class="function-card">
+						<h4>⬆️ SORT の基本構文</h4>
+						<div class="syntax">
+							=SORT(配列, [並び替えインデックス], [並び替え順序],
+							[並び替え基準])
+						</div>
+
+						<h4 style="margin-top: 15px">システム内での使用例</h4>
+						<div class="syntax">
+							// 伝票用シートのE2セル<br />
+							=TRANSPOSE(_xlws.SORT(_xlws.FILTER(ローゼン店舗マスター[店舗番号],ローゼン店舗マスター[非表示]<>\"〇\")))<br />
+							// 非表示でない店舗番号を並び替えて横方向に配置
+						</div>
+
+						<h4 style="margin-top: 15px">パラメータ詳細</h4>
+						<ul style="line-height: 1.8">
+							<li><strong>配列：</strong>並び替えたいデータ範囲</li>
+							<li>
+								<strong>並び替えインデックス：</strong>並び替え基準の列番号
+							</li>
+							<li><strong>並び替え順序：</strong>1=昇順、-1=降順</li>
+							<li><strong>並び替え基準：</strong>TRUE=列方向、FALSE=行方向</li>
+						</ul>
+					</div>
+
+					<h3>🔄 TRANSPOSE（行列転置）</h3>
+					<div class="function-card">
+						<h4>🔄 TRANSPOSE の機能</h4>
+						<div class="syntax">=TRANSPOSE(配列)</div>
+						<p>
+							<strong>機能：</strong
+							>行と列を入れ替えます（縦のデータを横に、横のデータを縦に）
+						</p>
+
+						<h4 style="margin-top: 15px">使用例</h4>
+						<div class="syntax">
+							// 縦一列のデータを横一行に変換<br />
+							=TRANSPOSE(A1:A10)<br /><br />
+							// システム内では店舗番号を横方向に配置するために使用
+						</div>
+					</div>
+
+					<h3>🔗 UNIQUE（重複排除）</h3>
+					<div class="function-card">
+						<h4>✨ UNIQUE の機能</h4>
+						<div class="syntax">=UNIQUE(配列, [列方向], [一度だけ出現])</div>
+						<p>
+							<strong>機能：</strong>重複を排除した一意の値のリストを返します
+						</p>
+
+						<h4 style="margin-top: 15px">使用例</h4>
+						<div class="syntax">
+							// 注文のある商品名の一覧（重複なし）<br />
+							=UNIQUE(注文データ[商品名])<br /><br />
+							// 一度だけ注文された商品（リピートなし）<br />
+							=UNIQUE(注文データ[商品名], FALSE, TRUE)
+						</div>
+					</div>
+
+					<div class="warning">
+						<h4>⚠️ 動的配列の注意点</h4>
+						<ul>
+							<li>
+								<strong>スピル範囲：</strong
+								>結果が複数セルに「スピル（こぼれる）」するため、下や右のセルが空いている必要があります
+							</li>
+							<li>
+								<strong>#SPILL! エラー：</strong
+								>スピル範囲に他のデータがあるとエラーになります
+							</li>
+							<li>
+								<strong>参照方法：</strong
+								>スピル範囲全体を参照する場合は、元のセル番号に#を付けます（例：A1#）
+							</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- Custom Functions Section -->
+				<section id="custom-functions" class="section">
+					<h2><span class="icon">🔧</span>カスタム関数（VBA製）</h2>
+
+					<div class="important-notice">
+						<h3>🚨 カスタム関数の取り扱い</h3>
+						<p>
+							以下の関数はVBAで作成されたシステム専用の関数です。<span
+								class="highlight"
+								>絶対に変更・削除しないでください</span
+							>。これらが壊れるとシステム全体が動作しなくなります。
+						</p>
+					</div>
+
+					<h3>📊 LastRowValues（最終行データ取得）</h3>
+					<div class="function-card">
+						<h4>🎯 機能</h4>
+						<p>指定したテーブルまたは範囲の最終行のデータを取得します。</p>
+
+						<h4>📝 使用例</h4>
+						<div class="syntax">
+							// 昼間用シートでの使用<br />
+							=LastRowValues(並べる表!$A$4)<br />
+							// 並べる表の最終行のA列データを取得
+						</div>
+
+						<h4>💡 用途</h4>
+						<ul style="line-height: 1.8">
+							<li>動的に変化するテーブルの最新データ取得</li>
+							<li>日付が変わった際の当日データ参照</li>
+							<li>製造計画の最新情報表示</li>
+						</ul>
+
+						<div class="warning" style="margin-top: 15px">
+							<h4>⚠️ 注意事項</h4>
+							<p>
+								この関数はVBAで実装されているため、マクロが無効になっていると動作しません。必ず「コンテンツの有効化」を行ってください。
+							</p>
+						</div>
+					</div>
+
+					<h3>🥖 KijiMei（生地名取得）</h3>
+					<div class="function-card">
+						<h4>🎯 機能</h4>
+						<p>商品名から対応する生地名を自動取得します。</p>
+
+						<h4>📝 使用例</h4>
+						<div class="syntax">
+							// 昼間用シートでの使用<br />
+							=KijiMei(ANCHORARRAY($A$4))<br />
+							// A4セルの商品名から生地名を取得
+						</div>
+
+						<h4>🔍 内部処理</h4>
+						<p>
+							商品データテーブルから該当商品の生地名列を検索し、対応する生地名を返します。商品名と生地名のマッピングテーブルを参照している可能性があります。
+						</p>
+
+						<h4>💡 用途</h4>
+						<ul style="line-height: 1.8">
+							<li>製造指示書での生地名表示</li>
+							<li>生地出しスケジュールの自動作成</li>
+							<li>材料所要量計算</li>
+						</ul>
+					</div>
+
+					<h3>🍞 NarabeSpill（並べ方計算）</h3>
+					<div class="function-card">
+						<h4>🎯 機能</h4>
+						<p>商品と個数から、天板への最適な並べ方を計算します。</p>
+
+						<h4>📝 使用例</h4>
+						<div class="syntax">
+							// 昼間用シートでの使用<br />
+							=NarabeSpill(ANCHORARRAY($A$4),ANCHORARRAY($B$4))<br />
+							// 商品名と個数から並べ方を計算
+						</div>
+
+						<h4>🔢 計算ロジック</h4>
+						<p>以下の要素を考慮して最適な配置を計算していると推測されます：</p>
+						<ul style="line-height: 1.8">
+							<li>商品の最大天板配置数</li>
+							<li>配置の倍数制約（5個ずつなど）</li>
+							<li>天板の効率的利用</li>
+							<li>作業効率の最適化</li>
+						</ul>
+
+						<h4>📤 出力形式</h4>
+						<div class="syntax">
+							// 出力例<br />
+							"12個乗せが3枚、11個乗せが2枚"<br />
+							// 具体的な天板構成を文字列で返す
+						</div>
+					</div>
+
+					<h3>⚙️ ANCHORARRAY（アンカー配列）</h3>
+					<div class="function-card">
+						<h4>🎯 機能</h4>
+						<p>
+							動的配列の基準セル（アンカー）を指定し、スピル範囲全体を参照可能にします。
+						</p>
+
+						<h4>📝 使用例</h4>
+						<div class="syntax">
+							=ANCHORARRAY($A$4)<br />
+							// A4セルをアンカーとする動的配列を参照
+						</div>
+
+						<h4>💡 用途</h4>
+						<ul style="line-height: 1.8">
+							<li>動的配列関数の結果を他の関数で利用</li>
+							<li>スピル範囲の安定した参照</li>
+							<li>複数の関数間でのデータ連携</li>
+						</ul>
+					</div>
+
+					<h3>🔧 VBA関数のトラブルシューティング</h3>
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>❌ #NAME? エラー</h4>
+							<p><strong>原因：</strong>VBA関数が認識されていない</p>
+							<p><strong>対処法：</strong></p>
+							<ul>
+								<li>「コンテンツの有効化」をクリック</li>
+								<li>ファイルを一度閉じて再度開く</li>
+								<li>マクロのセキュリティ設定を確認</li>
+							</ul>
+						</div>
+
+						<div class="function-card">
+							<h4>⏳ 計算が遅い</h4>
+							<p><strong>原因：</strong>VBA関数は通常の関数より処理が重い</p>
+							<p><strong>対処法：</strong></p>
+							<ul>
+								<li>計算モードを手動に変更</li>
+								<li>不要な再計算を避ける</li>
+								<li>大量データでの使用を控える</li>
+							</ul>
+						</div>
+
+						<div class="function-card">
+							<h4>🔄 結果が更新されない</h4>
+							<p><strong>原因：</strong>依存関係の計算順序の問題</p>
+							<p><strong>対処法：</strong></p>
+							<ul>
+								<li>Ctrl+Alt+F9で強制再計算</li>
+								<li>該当セルを選択してF2→Enter</li>
+								<li>ファイルを保存して再度開く</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="warning">
+						<h4>🚨 VBA関数使用時の注意事項</h4>
+						<ul>
+							<li>
+								<strong>バックアップ必須：</strong
+								>VBA関数を含むファイルは、必ず作業前にバックアップを取ってください
+							</li>
+							<li>
+								<strong>一度に一つずつ：</strong
+								>複数のVBA関数を同時に実行すると、予期しないエラーが発生する可能性があります
+							</li>
+							<li>
+								<strong>エラー時は即報告：</strong
+								>VBA関数でエラーが発生した場合は、すぐに上席者に報告してください
+							</li>
+							<li>
+								<strong>改変禁止：</strong
+								>VBAコードの内容を変更することは絶対に避けてください
+							</li>
+						</ul>
+					</div>
+				</section>
+			</main>
+
+			<!-- Quick Links -->
+			<nav class="quick-links">
+				<a href="trouble.html" class="quick-link"> 🔧 トラブル対応編へ進む </a>
+				<a href="daily.html" class="quick-link"> 📅 日常操作を確認 </a>
+				<a href="basics.html" class="quick-link"> 🔰 基礎知識を復習 </a>
+				<a href="index.html" class="quick-link"> 🏠 トップページに戻る </a>
+			</nav>
+
+			<!-- Footer -->
+			<footer class="footer">
+				<p>
+					関数解説編 | 最後に
+					<a href="trouble.html" style="color: rgba(255, 255, 255, 0.8)"
+						>🔧 トラブル対応編</a
+					>
+					で緊急時対応を確認しましょう
+				</p>
+			</footer>
+		</div>
+
+		<!-- 外部JavaScript読み込み -->
+		<script src="../assets/js/script.js"></script>
+
+		<!-- ページ固有のスクリプト -->
+		<script>
+			// 関数解説編固有の初期化
+			document.addEventListener('DOMContentLoaded', function () {
+				// パンくずリスト生成
+				if (window.manualSystem) {
+					window.manualSystem.generateBreadcrumb('functions');
+				}
+
+				// 関数サンプル実行機能
+				setupFunctionDemo();
+
+				// 構文ハイライト機能
+				setupSyntaxHighlight();
+
+				// 関数検索機能
+				setupFunctionSearch();
+			});
+
+			// 関数デモ機能
+			function setupFunctionDemo() {
+				const syntaxElements = document.querySelectorAll('.syntax');
+				syntaxElements.forEach((element) => {
+					const demoButton = document.createElement('button');
+					demoButton.textContent = '📋 コピー';
+					demoButton.style.cssText = `
+                    position: absolute;
+                    top: 5px;
+                    right: 5px;
+                    background: #74b9ff;
+                    color: white;
+                    border: none;
+                    padding: 5px 10px;
+                    border-radius: 10px;
+                    font-size: 0.8rem;
+                    cursor: pointer;
+                `;
+
+					element.style.position = 'relative';
+					element.appendChild(demoButton);
+
+					demoButton.addEventListener('click', function () {
+						const text = element.textContent.replace('📋 コピー', '').trim();
+						navigator.clipboard.writeText(text).then(() => {
+							demoButton.textContent = '✅ コピー済み';
+							setTimeout(() => {
+								demoButton.textContent = '📋 コピー';
+							}, 2000);
+						});
+					});
+				});
+			}
+
+			// 構文ハイライト機能
+			function setupSyntaxHighlight() {
+				const syntaxElements = document.querySelectorAll('.syntax');
+				syntaxElements.forEach((element) => {
+					let html = element.innerHTML;
+
+					// 関数名のハイライト
+					html = html.replace(
+						/([A-Z]+)\(/g,
+						'<span style="color: #00cec9; font-weight: bold;">$1</span>('
+					);
+
+					// セル参照のハイライト
+					html = html.replace(
+						/\$?[A-Z]+\$?\d+/g,
+						'<span style="color: #fdcb6e;">$&</span>'
+					);
+
+					// 文字列のハイライト
+					html = html.replace(
+						/"([^"]*)"/g,
+						'<span style="color: #fd79a8;">"$1"</span>'
+					);
+
+					element.innerHTML = html;
+				});
+			}
+
+			// 関数検索機能
+			function setupFunctionSearch() {
+				const searchBox = document.createElement('div');
+				searchBox.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background: rgba(255,255,255,0.95);
+                padding: 15px;
+                border-radius: 15px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                z-index: 100;
+            `;
+				searchBox.innerHTML = `
+                <input type="text" id="function-search" placeholder="🔍 関数を検索..." style="
+                    width: 200px;
+                    padding: 8px 12px;
+                    border: 2px solid #74b9ff;
+                    border-radius: 20px;
+                    font-size: 0.9rem;
+                ">
+                <div id="search-results" style="margin-top: 10px; max-height: 300px; overflow-y: auto;"></div>
+            `;
+				document.body.appendChild(searchBox);
+
+				const searchInput = document.getElementById('function-search');
+				const resultsDiv = document.getElementById('search-results');
+
+				// 関数リスト
+				const functions = [
+					{
+						name: 'TODAY',
+						description: '現在の日付を取得',
+						section: 'important-functions',
+					},
+					{
+						name: 'NOW',
+						description: '現在の日時を取得',
+						section: 'important-functions',
+					},
+					{
+						name: 'SUM',
+						description: '数値の合計を計算',
+						section: 'important-functions',
+					},
+					{
+						name: 'IF',
+						description: '条件分岐を行う',
+						section: 'important-functions',
+					},
+					{
+						name: 'IFERROR',
+						description: 'エラー時の値を指定',
+						section: 'important-functions',
+					},
+					{
+						name: 'XLOOKUP',
+						description: '高機能な検索関数',
+						section: 'lookup-functions',
+					},
+					{
+						name: 'FILTER',
+						description: 'データをフィルタリング',
+						section: 'dynamic-arrays',
+					},
+					{
+						name: 'SORT',
+						description: 'データを並び替え',
+						section: 'dynamic-arrays',
+					},
+					{
+						name: 'LastRowValues',
+						description: '最終行データを取得（VBA）',
+						section: 'custom-functions',
+					},
+					{
+						name: 'KijiMei',
+						description: '生地名を取得（VBA）',
+						section: 'custom-functions',
+					},
+					{
+						name: 'NarabeSpill',
+						description: '並べ方を計算（VBA）',
+						section: 'custom-functions',
+					},
+				];
+
+				searchInput.addEventListener('input', function () {
+					const query = this.value.toLowerCase();
+					const matches = functions.filter(
+						(func) =>
+							func.name.toLowerCase().includes(query) ||
+							func.description.includes(query)
+					);
+
+					if (query === '') {
+						resultsDiv.innerHTML = '';
+						return;
+					}
+
+					resultsDiv.innerHTML = matches
+						.map(
+							(func) => `
+                    <div style="
+                        padding: 8px;
+                        margin: 5px 0;
+                        background: #f8f9fa;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        border-left: 3px solid #74b9ff;
+                    " onclick="showSection('${func.section}'); document.getElementById('function-search').value = '';">
+                        <strong>${func.name}</strong><br>
+                        <small style="color: #636e72;">${func.description}</small>
+                    </div>
+                `
+						)
+						.join('');
+				});
+			}
+
+			// 関数理解度テスト
+			function showFunctionQuiz() {
+				const questions = [
+					{
+						question: 'TODAY()とNOW()の違いは何ですか？',
+						options: ['時刻の有無', '精度の違い', '更新頻度', '用途の違い'],
+						correct: 0,
+					},
+					{
+						question: 'IFERRORの主な用途は？',
+						options: [
+							'計算速度向上',
+							'エラー表示の回避',
+							'データ検証',
+							'メモリ節約',
+						],
+						correct: 1,
+					},
+					{
+						question: 'VBA関数が動作しない主な原因は？',
+						options: [
+							'Excel版の古さ',
+							'マクロ無効',
+							'メモリ不足',
+							'ネット接続',
+						],
+						correct: 1,
+					},
+				];
+
+				let currentQuestion = 0;
+				const modal = document.createElement('div');
+				modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+            `;
+
+				function showQuestion() {
+					const q = questions[currentQuestion];
+					modal.innerHTML = `
+                    <div style="
+                        background: white;
+                        padding: 30px;
+                        border-radius: 15px;
+                        max-width: 500px;
+                        text-align: center;
+                    ">
+                        <h3 style="color: #2d3436; margin-bottom: 20px;">
+                            関数理解度チェック (${currentQuestion + 1}/${
+						questions.length
+					})
+                        </h3>
+                        <p style="margin-bottom: 20px; font-size: 1.1rem;">${
+													q.question
+												}</p>
+                        ${q.options
+													.map(
+														(option, index) => `
+                            <button onclick="checkAnswer(${index})" style="
+                                display: block;
+                                width: 100%;
+                                padding: 10px;
+                                margin: 10px 0;
+                                background: #f8f9fa;
+                                border: 2px solid #74b9ff;
+                                border-radius: 8px;
+                                cursor: pointer;
+                            ">${option}</button>
+                        `
+													)
+													.join('')}
+                    </div>
+                `;
+				}
+
+				window.checkAnswer = function (selected) {
+					const q = questions[currentQuestion];
+					const buttons = modal.querySelectorAll('button');
+
+					buttons[selected].style.background =
+						selected === q.correct ? '#00b894' : '#ff7675';
+					buttons[selected].style.color = 'white';
+
+					if (selected !== q.correct) {
+						buttons[q.correct].style.background = '#00b894';
+						buttons[q.correct].style.color = 'white';
+					}
+
+					setTimeout(() => {
+						currentQuestion++;
+						if (currentQuestion < questions.length) {
+							showQuestion();
+						} else {
+							modal.innerHTML = `
+                            <div style="
+                                background: white;
+                                padding: 30px;
+                                border-radius: 15px;
+                                text-align: center;
+                            ">
+                                <h3 style="color: #00b894;">🎉 クイズ完了！</h3>
+                                <p>関数の理解が深まりました。</p>
+                                <button onclick="this.parentElement.parentElement.remove()" style="
+                                    background: #74b9ff;
+                                    color: white;
+                                    border: none;
+                                    padding: 10px 20px;
+                                    border-radius: 20px;
+                                    cursor: pointer;
+                                    margin-top: 15px;
+                                ">閉じる</button>
+                            </div>
+                        `;
+						}
+					}, 1500);
+				};
+
+				showQuestion();
+				document.body.appendChild(modal);
+			}
+
+			// クイズボタンの追加
+			const quizButton = document.createElement('button');
+			quizButton.innerHTML = '🧠 理解度チェック';
+			quizButton.style.cssText = `
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(253, 121, 168, 0.3);
+        `;
+			quizButton.addEventListener('click', showFunctionQuiz);
+			document.body.appendChild(quizButton);
+		</script>
+	</body>
+</html>

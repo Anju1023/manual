@@ -1,0 +1,581 @@
+@use 'sass:map';
+
+$colors: (
+	primary: #74b9ff,
+	secondary: #0984e3,
+	accent: #6c5ce7,
+	success: #00b894,
+	warning: #fdcb6e,
+	danger: #ff7675,
+	dark: #2d3436,
+	gray: #636e72,
+	light-gray: #f8f9fa,
+	white: #ffffff,
+);
+
+$gradients: (
+	primary: linear-gradient(135deg, #74b9ff 0%, #0984e3 50%, #6c5ce7 100%),
+	success: linear-gradient(135deg, #00b894 0%, #00cec9 50%, #74b9ff 100%),
+	warning: linear-gradient(135deg, #fdcb6e 0%, #e17055 50%, #fd79a8 100%),
+	danger: linear-gradient(135deg, #ff7675 0%, #e17055 100%),
+	info: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%),
+);
+
+$shadows: (
+	small: 0 5px 15px rgba(0, 0, 0, 0.1),
+	medium: 0 15px 35px rgba(0, 0, 0, 0.1),
+	large: 0 25px 50px rgba(0, 0, 0, 0.15),
+	hover: 0 20px 40px rgba(116, 185, 255, 0.25),
+);
+
+$breakpoints: (
+	mobile: 480px,
+	tablet: 768px,
+	desktop: 1024px,
+	large: 1200px,
+);
+
+// Mixins
+@mixin respond-to($breakpoint) {
+	@if map.has-key($breakpoints, $breakpoint) {
+		@media (max-width: map.get($breakpoints, $breakpoint)) {
+			@content;
+		}
+	}
+}
+
+@mixin glass-effect($opacity: 0.95) {
+	background: rgba(255, 255, 255, $opacity);
+	backdrop-filter: blur(20px);
+	border-radius: 25px;
+	box-shadow: map.get($shadows, large);
+}
+
+@mixin card-hover {
+	transition: all 0.3s ease;
+	&:hover {
+		transform: translateY(-8px);
+		box-shadow: map.get($shadows, hover);
+	}
+}
+
+@mixin button-style($color: primary) {
+	background: map.get($gradients, $color);
+	color: map.get($colors, white);
+	padding: 15px 25px;
+	border-radius: 30px;
+	text-decoration: none;
+	font-weight: 600;
+	transition: all 0.3s ease;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	border: none;
+	cursor: pointer;
+
+	&:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 15px 35px rgba(116, 185, 255, 0.4);
+	}
+}
+
+@mixin section-header {
+	font-size: 2.2rem;
+	color: map.get($colors, dark);
+	margin-bottom: 25px;
+	padding-bottom: 15px;
+	border-bottom: 4px solid map.get($colors, primary);
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	font-weight: 700;
+}
+
+// Base Styles
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+	line-height: 1.8;
+	color: map.get($colors, dark);
+	min-height: 100vh;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+// Header Styles
+.header {
+	@include glass-effect();
+	padding: 50px 40px;
+	margin-bottom: 30px;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 5px;
+		background: linear-gradient(90deg, #74b9ff, #0984e3, #6c5ce7, #a29bfe);
+	}
+
+	h1 {
+		font-size: 2.8rem;
+		color: map.get($colors, dark);
+		margin-bottom: 15px;
+		background: linear-gradient(
+			45deg,
+			map.get($colors, secondary),
+			map.get($colors, accent)
+		);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		font-weight: 700;
+
+		@include respond-to(tablet) {
+			font-size: 2.2rem;
+		}
+	}
+
+	p {
+		font-size: 1.2rem;
+		color: map.get($colors, gray);
+		font-weight: 500;
+	}
+
+	.subtitle {
+		font-size: 1rem;
+		color: #81ecec;
+		background: linear-gradient(
+			135deg,
+			map.get($colors, secondary),
+			rgba(255, 255, 255, 0.1)
+		);
+		padding: 10px 20px;
+		border-radius: 20px;
+		display: inline-block;
+		margin-top: 20px;
+	}
+
+	@include respond-to(tablet) {
+		padding: 30px 25px;
+	}
+}
+
+// Breadcrumb
+.breadcrumb {
+	background: rgba(map.get($colors, success), 0.1);
+	padding: 10px 20px;
+	border-radius: 20px;
+	display: inline-block;
+	margin-bottom: 20px;
+
+	a {
+		color: map.get($colors, success);
+		text-decoration: none;
+		font-weight: 600;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+// Navigation
+.page-nav {
+	@include glass-effect(0.9);
+	padding: 25px;
+	margin-bottom: 30px;
+
+	ul {
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 15px;
+		justify-content: center;
+	}
+
+	a {
+		@include button-style();
+		font-size: 1rem;
+		box-shadow: 0 5px 15px rgba(116, 185, 255, 0.3);
+	}
+
+	@include respond-to(tablet) {
+		ul {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+}
+
+// Main Content
+.main-content {
+	@include glass-effect();
+	padding: 50px;
+	margin-bottom: 30px;
+
+	@include respond-to(tablet) {
+		padding: 30px 25px;
+	}
+}
+
+// Sections
+.section {
+	margin-bottom: 60px;
+
+	h2 {
+		@include section-header();
+
+		@include respond-to(tablet) {
+			font-size: 1.8rem;
+		}
+	}
+
+	h3 {
+		font-size: 1.5rem;
+		color: map.get($colors, gray);
+		margin: 30px 0 20px 0;
+		padding-left: 20px;
+		border-left: 5px solid map.get($colors, accent);
+		font-weight: 600;
+	}
+}
+
+// Cards
+.function-grid,
+.nav-grid,
+.sheet-overview,
+.features-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 25px;
+	margin: 30px 0;
+
+	@include respond-to(tablet) {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+}
+
+.function-card,
+.nav-card,
+.sheet-card,
+.feature-item {
+	background: linear-gradient(
+		135deg,
+		map.get($colors, white),
+		map.get($colors, light-gray)
+	);
+	border-radius: 20px;
+	padding: 30px;
+	transition: all 0.3s ease;
+	box-shadow: map.get($shadows, small);
+
+	&:hover {
+		transform: translateY(-8px);
+		box-shadow: map.get($shadows, hover);
+	}
+
+	h4 {
+		color: map.get($colors, secondary);
+		font-size: 1.3rem;
+		margin-bottom: 15px;
+		font-weight: 700;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	p {
+		color: map.get($colors, gray);
+		line-height: 1.6;
+	}
+}
+
+// Navigation Cards (special styling)
+.nav-card {
+	text-align: center;
+	text-decoration: none;
+	color: inherit;
+	position: relative;
+	overflow: hidden;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 4px;
+		background: var(--card-color);
+		transform: scaleX(0);
+		transition: transform 0.3s ease;
+	}
+
+	&:hover::before {
+		transform: scaleX(1);
+	}
+
+	.icon {
+		font-size: 4rem;
+		margin-bottom: 20px;
+		display: block;
+	}
+
+	h3 {
+		font-size: 1.6rem;
+		color: map.get($colors, dark);
+		margin-bottom: 15px;
+		font-weight: 700;
+		border: none;
+		padding: 0;
+	}
+
+	.target {
+		background: rgba(map.get($colors, primary), 0.1);
+		color: map.get($colors, secondary);
+		padding: 5px 15px;
+		border-radius: 20px;
+		font-size: 0.9rem;
+		font-weight: 600;
+		margin-top: 15px;
+		display: inline-block;
+	}
+
+	&.basics {
+		--card-color: #{map.get($gradients, success)};
+	}
+	&.daily {
+		--card-color: #{map.get($gradients, info)};
+	}
+	&.functions {
+		--card-color: linear-gradient(135deg, #fd79a8, #e84393);
+	}
+	&.trouble {
+		--card-color: #{map.get($gradients, warning)};
+	}
+}
+
+// Special Elements
+.syntax {
+	background: linear-gradient(
+		135deg,
+		map.get($colors, dark),
+		map.get($colors, gray)
+	);
+	color: #00cec9;
+	padding: 15px 20px;
+	border-radius: 12px;
+	font-family: 'Consolas', 'Monaco', monospace;
+	margin: 15px 0;
+	font-size: 0.95rem;
+	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+// Alert Boxes
+.warning,
+.tip,
+.important-notice {
+	border-radius: 15px;
+	padding: 25px;
+	margin: 25px 0;
+	position: relative;
+
+	&::before {
+		font-size: 2rem;
+		position: absolute;
+		top: 15px;
+		right: 20px;
+	}
+
+	h4 {
+		margin-bottom: 15px;
+		font-weight: 700;
+		font-size: 1.2rem;
+	}
+}
+
+.warning,
+.important-notice {
+	background: map.get($gradients, danger);
+	color: map.get($colors, white);
+	box-shadow: 0 10px 25px rgba(255, 118, 117, 0.3);
+
+	&::before {
+		content: '⚠️';
+	}
+}
+
+.tip {
+	background: map.get($gradients, success);
+	color: map.get($colors, white);
+	box-shadow: 0 10px 25px rgba(0, 184, 148, 0.3);
+
+	&::before {
+		content: '💡';
+	}
+}
+
+// Process Flow
+.process-flow {
+	background: linear-gradient(135deg, map.get($colors, light-gray), #e9ecef);
+	padding: 30px;
+	border-radius: 15px;
+	margin: 25px 0;
+	text-align: center;
+	border: 2px dashed map.get($colors, primary);
+
+	p {
+		font-size: 1.1rem;
+		font-weight: 600;
+		color: map.get($colors, dark);
+	}
+}
+
+.step-number {
+	background: map.get($colors, primary);
+	color: map.get($colors, white);
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+	margin-right: 10px;
+	font-size: 0.9rem;
+}
+
+// Quick Links
+.quick-links {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin: 30px 0;
+	flex-wrap: wrap;
+
+	@include respond-to(tablet) {
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+.quick-link {
+	@include button-style(info);
+	background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+
+	&:hover {
+		box-shadow: 0 10px 25px rgba(162, 155, 254, 0.4);
+	}
+}
+
+// Utilities
+.highlight {
+	background: linear-gradient(135deg, map.get($colors, warning), #e17055);
+	color: map.get($colors, white);
+	padding: 2px 8px;
+	border-radius: 6px;
+	font-weight: 600;
+}
+
+.icon {
+	font-size: 1.8rem;
+	margin-right: 10px;
+}
+
+// Animations
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.fade-in {
+	animation: fadeIn 0.5s ease-in;
+}
+
+.nav-card {
+	animation: fadeInUp 0.6s ease forwards;
+
+	&:nth-child(1) {
+		animation-delay: 0.1s;
+	}
+	&:nth-child(2) {
+		animation-delay: 0.2s;
+	}
+	&:nth-child(3) {
+		animation-delay: 0.3s;
+	}
+	&:nth-child(4) {
+		animation-delay: 0.4s;
+	}
+}
+
+// Lists
+.section ul,
+.section ol {
+	margin-left: 25px;
+	margin-top: 15px;
+
+	li {
+		margin-bottom: 8px;
+		line-height: 1.6;
+	}
+}
+
+// Footer
+.footer {
+	text-align: center;
+	padding: 30px;
+	color: rgba(255, 255, 255, 0.8);
+
+	p {
+		margin: 0;
+	}
+}
+
+// Page-specific backgrounds
+body.index {
+	background: map.get($gradients, primary);
+}
+body.basics {
+	background: map.get($gradients, success);
+}
+body.daily {
+	background: map.get($gradients, info);
+}
+body.functions {
+	background: linear-gradient(135deg, #fd79a8 0%, #e84393 50%, #a29bfe 100%);
+}
+body.trouble {
+	background: map.get($gradients, warning);
+}

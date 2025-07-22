@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>日常操作編 - パン製造システムマニュアル</title>
+		<meta
+			name="description"
+			content="パン製造システムの日常業務操作手順を詳しく解説。毎日・週次・月次の作業手順をステップバイステップで説明します。"
+		/>
+
+		<!-- 外部CSS読み込み -->
+		<link rel="stylesheet" href="../assets/css/style.css" />
+
+		<!-- ファビコン -->
+		<link
+			rel="icon"
+			href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📅</text></svg>"
+		/>
+	</head>
+	<body class="daily">
+		<div class="container">
+			<!-- Header -->
+			<header class="header">
+				<div class="breadcrumb">
+					<a href="index.html">🏠 トップページ</a> > <span>📅 日常操作編</span>
+				</div>
+				<h1>📅 日常操作編</h1>
+				<p>毎日の業務で使用する具体的な操作手順</p>
+			</header>
+
+			<!-- Navigation -->
+			<nav class="page-nav">
+				<ul>
+					<li>
+						<a href="#daily-workflow" onclick="showSection('daily-workflow')"
+							>🌅 毎日の作業</a
+						>
+					</li>
+					<li>
+						<a href="#weekly-tasks" onclick="showSection('weekly-tasks')"
+							>📅 週次作業</a
+						>
+					</li>
+					<li>
+						<a href="#monthly-tasks" onclick="showSection('monthly-tasks')"
+							>📆 月次作業</a
+						>
+					</li>
+					<li>
+						<a
+							href="#data-modification"
+							onclick="showSection('data-modification')"
+							>✏️ データ変更</a
+						>
+					</li>
+					<li><a href="functions.html">⚡ 関数解説編へ</a></li>
+				</ul>
+			</nav>
+
+			<!-- Main Content -->
+			<main class="main-content">
+				<!-- Daily Workflow Section -->
+				<section id="daily-workflow" class="section active">
+					<h2><span class="icon">🌅</span>毎日の作業手順</h2>
+
+					<div class="tip">
+						<h4>⏰ 作業開始前のチェック</h4>
+						<p>
+							毎日の作業を始める前に、必ずバックアップを取り、前日の作業が正しく完了していることを確認してください。
+						</p>
+					</div>
+
+					<h3>📋 作業1：天板並べ個数表の作成</h3>
+					<div class="function-card">
+						<h4>🎯 目的</h4>
+						<p>
+							今日製造する商品を天板にどのように並べるかの指示書を作成します。
+						</p>
+
+						<h4>📍 使用シート</h4>
+						<p>
+							<strong>昼間用シート</strong>（24時間体制の場合は夜間用シートも）
+						</p>
+
+						<h4>🔧 操作手順</h4>
+						<ol style="line-height: 1.8">
+							<li>
+								<strong>ファイルを開く</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>CB商品データ.xlsmを開く</li>
+									<li>
+										マクロの有効化を確認（「コンテンツの有効化」をクリック）
+									</li>
+								</ul>
+							</li>
+							<li>
+								<strong>操作シートに移動</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>画面下部の「操作」タブをクリック</li>
+									<li>ボタン一覧が表示されることを確認</li>
+								</ul>
+							</li>
+							<li>
+								<strong>更新ボタンを実行</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>
+										「昼間用更新」ボタンを<span class="highlight">1回だけ</span
+										>クリック
+									</li>
+									<li>処理完了まで待機（他の操作は行わない）</li>
+									<li>処理時間：約30秒〜1分</li>
+								</ul>
+							</li>
+							<li>
+								<strong>結果確認</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>「昼間用」シートに移動</li>
+									<li>今日の日付が正しく表示されているか確認</li>
+									<li>商品名、個数、並べ方が表示されているか確認</li>
+								</ul>
+							</li>
+							<li>
+								<strong>印刷</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>Ctrl+P で印刷画面を開く</li>
+									<li>印刷範囲が正しく設定されていることを確認</li>
+									<li>必要部数を印刷</li>
+								</ul>
+							</li>
+						</ol>
+					</div>
+
+					<div class="warning">
+						<h4>⚠️ 注意事項</h4>
+						<ul>
+							<li>
+								ボタンは<span class="highlight">必ず1回だけ</span
+								>クリックしてください
+							</li>
+							<li>
+								処理中にExcelを操作したり、他のアプリケーションを開いたりしないでください
+							</li>
+							<li>
+								エラーが表示された場合は、処理を中断して上席者に報告してください
+							</li>
+						</ul>
+					</div>
+
+					<h3>📄 作業2：明細書の作成</h3>
+					<div class="function-card">
+						<h4>🎯 目的</h4>
+						<p>各店舗への納品内容と金額を記載した明細書を作成します。</p>
+
+						<h4>📍 使用シート</h4>
+						<p>
+							<strong>伝票用シート</strong
+							>（自社店舗用）、<strong>クリエ伝票用シート</strong>（他社店舗用）
+						</p>
+
+						<h4>🔧 操作手順</h4>
+						<ol style="line-height: 1.8">
+							<li>
+								<strong>伝票更新の実行</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>「操作」シートで「伝票用更新」ボタンをクリック</li>
+									<li>続いて「クリエ伝票用更新」ボタンをクリック</li>
+									<li>各処理の完了を待つ</li>
+								</ul>
+							</li>
+							<li>
+								<strong>金額確認</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>「伝票用」シートで各店舗の合計金額を確認</li>
+									<li>明らかに異常な金額がないかチェック</li>
+									<li>前日の金額と大幅に異なる場合は確認</li>
+								</ul>
+							</li>
+							<li>
+								<strong>印刷実行</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>各シートを印刷（店舗数に応じて複数ページ）</li>
+									<li>印刷後、数値に間違いがないか最終確認</li>
+								</ul>
+							</li>
+						</ol>
+					</div>
+
+					<h3>💾 作業3：納品記録PDFの作成</h3>
+					<div class="function-card">
+						<h4>🎯 目的</h4>
+						<p>
+							各店舗への納品実績を記録として保存します。後日の問い合わせ対応や実績管理に使用します。
+						</p>
+
+						<h4>🔧 操作手順</h4>
+						<ol style="line-height: 1.8">
+							<li>
+								<strong>PDF出力準備</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>各店舗シートで納品データが最新であることを確認</li>
+									<li>「操作」シートで「PDF出力」ボタンをクリック</li>
+								</ul>
+							</li>
+							<li>
+								<strong>保存場所の指定</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>保存ダイアログで適切なフォルダを選択</li>
+									<li>ファイル名に日付を含める（例：納品記録_20240722.pdf）</li>
+								</ul>
+							</li>
+							<li>
+								<strong>内容確認</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>作成されたPDFを開いて内容を確認</li>
+									<li>全店舗のデータが含まれているかチェック</li>
+								</ul>
+							</li>
+						</ol>
+					</div>
+
+					<h3>⏰ 作業タイムライン</h3>
+					<div
+						style="
+							background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+							padding: 25px;
+							border-radius: 15px;
+							margin: 25px 0;
+						"
+					>
+						<h4 style="color: #2d3436; margin-bottom: 15px">推奨作業時間</h4>
+						<div
+							style="
+								display: grid;
+								grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+								gap: 15px;
+							"
+						>
+							<div
+								style="background: white; padding: 15px; border-radius: 10px"
+							>
+								<strong>06:00-06:30</strong><br />
+								<span style="color: #636e72">天板並べ表作成・印刷</span>
+							</div>
+							<div
+								style="background: white; padding: 15px; border-radius: 10px"
+							>
+								<strong>07:00-07:30</strong><br />
+								<span style="color: #636e72">明細書作成・確認</span>
+							</div>
+							<div
+								style="background: white; padding: 15px; border-radius: 10px"
+							>
+								<strong>16:00-16:15</strong><br />
+								<span style="color: #636e72">納品記録PDF作成</span>
+							</div>
+							<div
+								style="background: white; padding: 15px; border-radius: 10px"
+							>
+								<strong>17:00-17:15</strong><br />
+								<span style="color: #636e72">翌日準備・バックアップ</span>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Weekly Tasks Section -->
+				<section id="weekly-tasks" class="section">
+					<h2><span class="icon">📅</span>週次作業</h2>
+
+					<div class="tip">
+						<h4>📅 実施タイミング</h4>
+						<p>
+							毎週<strong>日曜日の夕方</strong>に実施することを推奨します。翌週の準備を整え、スムーズな業務開始につなげます。
+						</p>
+					</div>
+
+					<h3>🔄 作業1：全シート更新作業</h3>
+					<div class="function-card">
+						<h4>🎯 目的</h4>
+						<p>
+							一週間の業務データを整理し、各シートの計算結果を最新状態に更新します。
+						</p>
+
+						<h4>🔧 操作手順</h4>
+						<ol style="line-height: 1.8">
+							<li>
+								<strong>更新前のバックアップ</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>CB商品データ.xlsmのコピーを作成</li>
+									<li>ファイル名に日付を追加して保存</li>
+								</ul>
+							</li>
+							<li>
+								<strong>製造数更新</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>「操作」シートで「製造数更新」ボタンをクリック</li>
+									<li>処理完了まで約2-3分待機</li>
+								</ul>
+							</li>
+							<li>
+								<strong>生地出し更新</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>「冷凍生地出し更新」ボタンをクリック</li>
+									<li>「スクラッチ生地出し更新」ボタンをクリック</li>
+								</ul>
+							</li>
+							<li>
+								<strong>ラベル出し更新</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>「ラベル出し更新」ボタンをクリック</li>
+									<li>「クリエラベル出し更新」ボタンをクリック</li>
+								</ul>
+							</li>
+						</ol>
+					</div>
+
+					<h3>🖨️ 作業2：厨房用表の印刷</h3>
+					<div class="function-card">
+						<h4>📋 印刷対象シート</h4>
+						<ul style="line-height: 1.8">
+							<li><strong>冷凍生地出し</strong> - 冷凍生地の作業計画表</li>
+							<li>
+								<strong>スクラッチ生地出し</strong> - 生地作りの作業計画表
+							</li>
+							<li><strong>並べる表</strong> - 天板配置の計画表</li>
+							<li><strong>ラベル出し</strong> - 商品ラベル作成用</li>
+						</ul>
+
+						<h4>🔧 印刷手順</h4>
+						<ol style="line-height: 1.8">
+							<li>各シートを順番に選択</li>
+							<li>印刷プレビューで内容と範囲を確認</li>
+							<li>必要部数を印刷（通常は2部）</li>
+							<li>印刷物を厨房の指定場所に掲示</li>
+						</ol>
+					</div>
+
+					<h3>📦 作業3：発注表作成</h3>
+					<div class="function-card">
+						<h4>🎯 目的</h4>
+						<p>翌週に必要な材料を自動計算し、仕入先別の発注表を作成します。</p>
+
+						<h4>🔧 操作手順</h4>
+						<ol style="line-height: 1.8">
+							<li>
+								<strong>発注データ更新</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>「操作」シートで「発注表作成」ボタンをクリック</li>
+									<li>レシピデータと製造数から必要量を自動計算</li>
+								</ul>
+							</li>
+							<li>
+								<strong>発注量の確認</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>「発注」シートで計算結果を確認</li>
+									<li>異常に多い/少ない発注量がないかチェック</li>
+									<li>在庫状況と照らし合わせて調整</li>
+								</ul>
+							</li>
+							<li>
+								<strong>仕入先別発注表の出力</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>「仕入先別発注表作成」ボタンをクリック</li>
+									<li>各仕入先用の発注表を印刷</li>
+									<li>FAXまたはメールで各仕入先に送信</li>
+								</ul>
+							</li>
+						</ol>
+					</div>
+
+					<h3>🧾 作業4：消耗品発注</h3>
+					<div class="function-card">
+						<h4>📋 確認項目</h4>
+						<ul style="line-height: 1.8">
+							<li>包装資材（袋、容器、ラベル用紙）</li>
+							<li>清掃用品（洗剤、タオル、ブラシ）</li>
+							<li>事務用品（印刷用紙、インク、文具）</li>
+							<li>安全用品（手袋、マスク、エプロン）</li>
+						</ul>
+
+						<h4>🔧 発注手順</h4>
+						<ol style="line-height: 1.8">
+							<li>各消耗品の在庫状況を目視確認</li>
+							<li>「消耗品管理表」（Excelの別ファイル）を更新</li>
+							<li>必要な商品を発注</li>
+							<li>発注記録を管理表に記載</li>
+						</ol>
+					</div>
+				</section>
+
+				<!-- Monthly Tasks Section -->
+				<section id="monthly-tasks" class="section">
+					<h2><span class="icon">📆</span>月次作業</h2>
+
+					<div class="tip">
+						<h4>📅 実施タイミング</h4>
+						<p>
+							毎月<strong>最終営業日</strong>に実施します。翌月の準備と当月の実績整理を行います。
+						</p>
+					</div>
+
+					<h3>👥 作業1：シフト表作成</h3>
+					<div class="function-card">
+						<h4>🎯 目的</h4>
+						<p>翌月の従業員シフトを作成し、適切な人員配置を計画します。</p>
+
+						<h4>🔧 操作手順</h4>
+						<ol style="line-height: 1.8">
+							<li>
+								<strong>シフト希望の収集</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>従業員からの休暇希望を確認</li>
+									<li>繁忙期・閑散期を考慮</li>
+								</ul>
+							</li>
+							<li>
+								<strong>シフト表の作成</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>専用のシフト管理Excelファイルを使用</li>
+									<li>製造量に応じた適切な人員配置</li>
+									<li>労働時間の法的制限を遵守</li>
+								</ul>
+							</li>
+							<li>
+								<strong>確認と配布</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>作成したシフト表を印刷</li>
+									<li>従業員への配布・掲示</li>
+								</ul>
+							</li>
+						</ol>
+					</div>
+
+					<h3>📊 作業2：棚卸表の本社報告</h3>
+					<div class="function-card">
+						<h4>🎯 目的</h4>
+						<p>月末時点での材料在庫を正確に把握し、本社に報告します。</p>
+
+						<h4>🔧 操作手順</h4>
+						<ol style="line-height: 1.8">
+							<li>
+								<strong>在庫実地確認</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>冷凍庫・冷蔵庫・常温保管の全材料を確認</li>
+									<li>数量と消費期限を記録</li>
+								</ul>
+							</li>
+							<li>
+								<strong>棚卸表への入力</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>専用の棚卸表Excelファイルに入力</li>
+									<li>理論在庫との差異を確認</li>
+									<li>差異がある場合は原因を調査</li>
+								</ul>
+							</li>
+							<li>
+								<strong>本社への報告</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>完成した棚卸表をメール添付で送信</li>
+									<li>特記事項がある場合は別途連絡</li>
+								</ul>
+							</li>
+						</ol>
+					</div>
+
+					<h3>🆕 作業3：新商品登録</h3>
+					<div class="function-card">
+						<h4>📋 登録情報</h4>
+						<ul style="line-height: 1.8">
+							<li>商品ID（カテゴリ頭文字+4桁数字）</li>
+							<li>商品名</li>
+							<li>売価（一般・クリエ用）</li>
+							<li>消費期限</li>
+							<li>生地名・製造方法</li>
+							<li>包装資材・ラベル番号</li>
+						</ul>
+
+						<h4>⚠️ 注意事項</h4>
+						<p>
+							<span class="highlight"
+								>新商品登録は必ず上席者の指示のもとで行ってください。</span
+							>間違った登録は全システムに影響します。
+						</p>
+					</div>
+
+					<h3>🔚 作業4：終売商品の処理</h3>
+					<div class="function-card">
+						<h4>🎯 目的</h4>
+						<p>
+							販売終了となった商品をシステムから非表示にし、製造計画から除外します。
+						</p>
+
+						<h4>🔧 操作手順</h4>
+						<ol style="line-height: 1.8">
+							<li>
+								<strong>終売商品の確認</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>本社からの終売指示を確認</li>
+									<li>在庫状況を最終チェック</li>
+								</ul>
+							</li>
+							<li>
+								<strong>システムでの処理</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>「商品データ」シートで該当商品を検索</li>
+									<li>「終売」列に「○」を入力</li>
+									<li>各種表示から自動的に除外される</li>
+								</ul>
+							</li>
+						</ol>
+
+						<div class="warning" style="margin-top: 15px">
+							<h4>⚠️ 重要な注意</h4>
+							<p>
+								商品データは<span class="highlight">削除せず、非表示処理</span
+								>してください。過去のデータ参照で必要になる場合があります。
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- Data Modification Section -->
+				<section id="data-modification" class="section">
+					<h2><span class="icon">✏️</span>データ変更・修正作業</h2>
+
+					<div class="important-notice">
+						<h3>🚨 データ変更の重要ルール</h3>
+						<p>
+							データ変更は40店舗すべてに影響するため、<span class="highlight"
+								>必ず上席者の承認を得てから実行</span
+							>してください。
+						</p>
+					</div>
+
+					<h3>🏪 店舗の納品個数変更</h3>
+					<div class="function-card">
+						<h4>📞 変更依頼への対応</h4>
+						<p>店舗から納品個数の変更依頼があった場合の対応手順です。</p>
+
+						<h4>🔧 操作手順</h4>
+						<ol style="line-height: 1.8">
+							<li>
+								<strong>変更内容の確認</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>依頼店舗名・商品名・変更後個数を正確に記録</li>
+									<li>変更理由を確認（イベント、天候等）</li>
+									<li>変更日時を明確にする</li>
+								</ul>
+							</li>
+							<li>
+								<strong>上席者への報告</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>変更内容を上席者に報告</li>
+									<li>承認を得てから作業開始</li>
+								</ul>
+							</li>
+							<li>
+								<strong>システムでの変更</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>該当店舗のシートを開く</li>
+									<li>対象日・対象商品のセルを見つける</li>
+									<li>新しい個数を入力</li>
+								</ul>
+							</li>
+							<li>
+								<strong>影響範囲の確認</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>「製造数」シートで合計製造数の変化を確認</li>
+									<li>「生地出し」シートで必要生地量の変化を確認</li>
+									<li>「発注」シートで材料必要量の変化を確認</li>
+								</ul>
+							</li>
+							<li>
+								<strong>関連書類の更新</strong>
+								<ul style="margin: 5px 0 10px 20px">
+									<li>変更後の明細書を再作成</li>
+									<li>製造指示書を更新</li>
+									<li>変更記録を作業日報に記載</li>
+								</ul>
+							</li>
+						</ol>
+					</div>
+
+					<h3>💰 価格変更への対応</h3>
+					<div class="function-card">
+						<h4>🎯 価格改定時の作業</h4>
+						<p>本社からの価格改定指示に基づく売価変更の手順です。</p>
+
+						<h4>⚠️ 事前準備</h4>
+						<ul style="line-height: 1.8">
+							<li>価格改定指示書の内容を十分に確認</li>
+							<li>変更対象商品のリストを作成</li>
+							<li>実施日時を確認</li>
+							<li><span class="highlight">必ずバックアップを作成</span></li>
+						</ul>
+
+						<h4>🔧 変更手順</h4>
+						<ol style="line-height: 1.8">
+							<li>「商品データ」シートを開く</li>
+							<li>対象商品を検索（Ctrl+Fで検索）</li>
+							<li>「売価」列または「クリエ売価」列を更新</li>
+							<li>変更後の価格が正しく入力されているか確認</li>
+							<li>「価格改定後」シートで変更内容を記録</li>
+						</ol>
+					</div>
+
+					<h3>📝 変更作業の記録</h3>
+					<div class="function-card">
+						<h4>📋 記録すべき内容</h4>
+						<ul style="line-height: 1.8">
+							<li>変更日時</li>
+							<li>変更者名</li>
+							<li>変更内容（変更前→変更後）</li>
+							<li>変更理由</li>
+							<li>承認者名</li>
+							<li>影響範囲</li>
+						</ul>
+
+						<h4>💾 記録方法</h4>
+						<p>
+							専用の変更記録簿（Excelファイル）に記載し、定期的にバックアップを取ってください。
+						</p>
+					</div>
+
+					<div class="warning">
+						<h4>🚫 してはいけないこと</h4>
+						<ul>
+							<li>口頭依頼のみでの変更（必ず書面またはメールで確認）</li>
+							<li>複数の変更を同時に実行</li>
+							<li>変更後の確認を怠る</li>
+							<li>バックアップなしでの重要な変更</li>
+							<li>承認なしでの独断変更</li>
+						</ul>
+					</div>
+				</section>
+			</main>
+
+			<!-- Quick Links -->
+			<nav class="quick-links">
+				<a href="functions.html" class="quick-link"> ⚡ 関数解説編へ進む </a>
+				<a href="trouble.html" class="quick-link"> 🔧 トラブル対応を確認 </a>
+				<a href="basics.html" class="quick-link"> 🔰 基礎知識を復習 </a>
+				<a href="index.html" class="quick-link"> 🏠 トップページに戻る </a>
+			</nav>
+
+			<!-- Footer -->
+			<footer class="footer">
+				<p>
+					日常操作編 | 次は
+					<a href="functions.html" style="color: rgba(255, 255, 255, 0.8)"
+						>⚡ 関数解説編</a
+					>
+					で技術的な理解を深めましょう
+				</p>
+			</footer>
+		</div>
+
+		<!-- 外部JavaScript読み込み -->
+		<script src="../assets/js/script.js"></script>
+
+		<!-- ページ固有のスクリプト -->
+		<script>
+			// 日常操作編固有の初期化
+			document.addEventListener('DOMContentLoaded', function () {
+				// パンくずリスト生成
+				if (window.manualSystem) {
+					window.manualSystem.generateBreadcrumb('daily');
+				}
+
+				// 作業チェックリスト機能
+				setupTaskChecklist();
+
+				// 時間管理機能
+				setupTimeManagement();
+
+				// 作業手順のハイライト機能
+				setupStepHighlight();
+			});
+
+			// 作業チェックリスト機能
+			function setupTaskChecklist() {
+				const sections = document.querySelectorAll('.section');
+				sections.forEach((section) => {
+					const steps = section.querySelectorAll('ol li');
+					steps.forEach((step, index) => {
+						const checkbox = document.createElement('input');
+						checkbox.type = 'checkbox';
+						checkbox.style.marginRight = '8px';
+						checkbox.addEventListener('change', function () {
+							if (this.checked) {
+								step.style.textDecoration = 'line-through';
+								step.style.opacity = '0.7';
+							} else {
+								step.style.textDecoration = 'none';
+								step.style.opacity = '1';
+							}
+						});
+						step.insertBefore(checkbox, step.firstChild);
+					});
+				});
+			}
+
+			// 時間管理機能
+			function setupTimeManagement() {
+				const timeTracker = document.createElement('div');
+				timeTracker.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                background: rgba(116, 185, 255, 0.9);
+                color: white;
+                padding: 15px;
+                border-radius: 15px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 100;
+                font-weight: 600;
+            `;
+				timeTracker.innerHTML = `
+                <div>⏰ 現在時刻: <span id="current-time"></span></div>
+                <div style="margin-top: 5px; font-size: 0.9rem;">
+                    <span id="work-phase"></span>
+                </div>
+            `;
+				document.body.appendChild(timeTracker);
+
+				function updateTime() {
+					const now = new Date();
+					const timeString = now.toLocaleTimeString('ja-JP');
+					document.getElementById('current-time').textContent = timeString;
+
+					const hour = now.getHours();
+					let phase = '';
+					if (hour >= 6 && hour < 8) {
+						phase = '🌅 朝の準備時間';
+					} else if (hour >= 8 && hour < 16) {
+						phase = '🍞 製造時間';
+					} else if (hour >= 16 && hour < 18) {
+						phase = '📦 納品・整理時間';
+					} else {
+						phase = '🌙 翌日準備時間';
+					}
+					document.getElementById('work-phase').textContent = phase;
+				}
+
+				updateTime();
+				setInterval(updateTime, 1000);
+			}
+
+			// 作業手順のハイライト機能
+			function setupStepHighlight() {
+				const procedures = document.querySelectorAll('ol');
+				procedures.forEach((procedure) => {
+					const steps = procedure.querySelectorAll('li');
+					steps.forEach((step, index) => {
+						step.addEventListener('click', function () {
+							// 他のステップのハイライトを削除
+							steps.forEach((s) => (s.style.backgroundColor = ''));
+
+							// クリックされたステップをハイライト
+							this.style.backgroundColor = 'rgba(116, 185, 255, 0.2)';
+							this.style.borderRadius = '8px';
+							this.style.padding = '10px';
+
+							// 3秒後にハイライトを削除
+							setTimeout(() => {
+								this.style.backgroundColor = '';
+								this.style.padding = '';
+							}, 3000);
+						});
+					});
+				});
+			}
+
+			// 緊急連絡先表示
+			function showEmergencyContacts() {
+				const modal = document.createElement('div');
+				modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+            `;
+				modal.innerHTML = `
+                <div style="
+                    background: white;
+                    padding: 30px;
+                    border-radius: 15px;
+                    max-width: 400px;
+                    text-align: center;
+                ">
+                    <h3 style="color: #ff7675; margin-bottom: 20px;">🆘 緊急連絡先</h3>
+                    <p><strong>システム管理者:</strong> 内線123</p>
+                    <p><strong>製造責任者:</strong> 内線456</p>
+                    <p><strong>本社システム部:</strong> 03-1234-5678</p>
+                    <button onclick="this.parentElement.parentElement.remove()" style="
+                        background: #74b9ff;
+                        color: white;
+                        border: none;
+                        padding: 10px 20px;
+                        border-radius: 20px;
+                        margin-top: 20px;
+                        cursor: pointer;
+                    ">閉じる</button>
+                </div>
+            `;
+				document.body.appendChild(modal);
+			}
+
+			// 緊急連絡ボタンの追加
+			const emergencyButton = document.createElement('button');
+			emergencyButton.innerHTML = '🆘 緊急連絡先';
+			emergencyButton.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff7675, #e17055);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(255, 118, 117, 0.3);
+        `;
+			emergencyButton.addEventListener('click', showEmergencyContacts);
+			document.body.appendChild(emergencyButton);
+		</script>
+	</body>
+</html>

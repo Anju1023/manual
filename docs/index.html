@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>パン製造システム操作マニュアル</title>
+		<meta
+			name="description"
+			content="CB商品データ・T納品データの完全操作ガイド。40店舗対応統合管理システムのマニュアルです。"
+		/>
+		<meta
+			name="keywords"
+			content="パン製造,システム,マニュアル,CB商品データ,T納品データ,Excel,VBA"
+		/>
+
+		<!-- 外部CSS読み込み -->
+		<link rel="stylesheet" href="../assets/css/style.css" />
+
+		<!-- ファビコン -->
+		<link
+			rel="icon"
+			href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍞</text></svg>"
+		/>
+	</head>
+	<body class="index">
+		<div class="container">
+			<!-- Header -->
+			<header class="header">
+				<h1>🍞 パン製造システム操作マニュアル</h1>
+				<p>CB商品データ・T納品データ完全操作ガイド</p>
+				<div class="subtitle">40店舗対応 統合管理システム</div>
+			</header>
+
+			<!-- Important Notice -->
+			<section class="important-notice">
+				<h3>⚠️ ご利用前に必ずお読みください</h3>
+				<p>
+					このシステムは40店舗に直接影響するため、操作には十分ご注意ください。<br />
+					不明な点がある場合は、必ず上席者に確認してから操作を行ってください。
+				</p>
+			</section>
+
+			<!-- Navigation Cards -->
+			<main class="nav-grid">
+				<a href="basics.html" class="nav-card basics">
+					<span class="icon">🔰</span>
+					<h3>基礎知識編</h3>
+					<p>
+						Excelの基本操作からシステム概要まで、初心者の方が最初に読むべき内容をまとめています。新入社員の方はこちらから始めてください。
+					</p>
+					<div class="target">🎯 新入社員・初心者向け</div>
+				</a>
+
+				<a href="daily.html" class="nav-card daily">
+					<span class="icon">📅</span>
+					<h3>日常操作編</h3>
+					<p>
+						毎日の業務で使用する機能や操作手順を詳しく解説しています。実際の作業で参照してください。
+					</p>
+					<div class="target">🎯 日常業務・実作業用</div>
+				</a>
+
+				<a href="functions.html" class="nav-card functions">
+					<span class="icon">⚡</span>
+					<h3>関数解説編</h3>
+					<p>
+						システムで使用されている関数の詳細解説です。技術的な理解を深めたい方向けの専門資料です。
+					</p>
+					<div class="target">🎯 技術者・上級者向け</div>
+				</a>
+
+				<a href="trouble.html" class="nav-card trouble">
+					<span class="icon">🔧</span>
+					<h3>トラブル対応編</h3>
+					<p>
+						エラーが発生した際の対処法や緊急時の対応手順をまとめています。困った時にお読みください。
+					</p>
+					<div class="target">🎯 緊急時・トラブル発生時</div>
+				</a>
+			</main>
+
+			<!-- System Information -->
+			<section class="info-section">
+				<h2>📊 システム概要</h2>
+
+				<div class="features-grid">
+					<div class="feature-item">
+						<h4>🏭 製造管理</h4>
+						<p>
+							パンの製造スケジュールから生地出し計画まで、製造工程全体を効率的に管理できます。商品ごとの製造タイミングを自動計算します。
+						</p>
+					</div>
+
+					<div class="feature-item">
+						<h4>🚚 納品管理</h4>
+						<p>
+							40店舗への納品計画、個数管理、配送スケジュールを一元管理。各店舗の売上データと連動した最適な納品計画を立てられます。
+						</p>
+					</div>
+
+					<div class="feature-item">
+						<h4>📋 在庫管理</h4>
+						<p>
+							材料の発注から消耗品まで、必要な資材の適切な在庫管理。無駄のない効率的な資材調達をサポートします。
+						</p>
+					</div>
+
+					<div class="feature-item">
+						<h4>📊 データ分析</h4>
+						<p>
+							製造数の分析、売上データの集計、効率的な業務改善のためのデータ活用。トレンド分析で将来の需要も予測できます。
+						</p>
+					</div>
+
+					<div class="feature-item">
+						<h4>🤖 自動化機能</h4>
+						<p>
+							VBAマクロによる自動計算で、複雑な処理も一瞬で完了。人的ミスを減らし、作業効率を大幅に向上させます。
+						</p>
+					</div>
+
+					<div class="feature-item">
+						<h4>🔄 リアルタイム更新</h4>
+						<p>
+							データの変更が即座に関連するすべての表に反映。常に最新の情報で業務を進められます。
+						</p>
+					</div>
+				</div>
+
+				<div class="process-flow">
+					<h3 style="color: #2d3436; margin-bottom: 15px">🎯 推奨学習順序</h3>
+					<p>
+						<span class="step-number">1</span><strong>基礎知識編</strong> →
+						<span class="step-number">2</span><strong>日常操作編</strong> →
+						<span class="step-number">3</span><strong>関数解説編</strong><br />
+						<small style="color: #636e72"
+							>※ トラブル対応編は必要に応じて参照してください</small
+						>
+					</p>
+				</div>
+			</section>
+
+			<!-- File Structure Info -->
+			<section class="info-section">
+				<h2>📁 ファイル構成</h2>
+
+				<div class="sheet-overview">
+					<div class="sheet-card">
+						<h4>📗 CB商品データ.xlsm</h4>
+						<p>
+							<strong>メインシステムファイル</strong><br />
+							商品マスターデータ、製造計画、各店舗の納品データなど、業務の中核となる情報をすべて管理しています。
+						</p>
+						<ul style="margin-top: 10px; font-size: 0.9rem; color: #636e72">
+							<li>60以上のシートで構成</li>
+							<li>40店舗分の納品データ</li>
+							<li>製造・発注・ラベル出し機能</li>
+						</ul>
+					</div>
+
+					<div class="sheet-card">
+						<h4>📘 T納品データ.xlsm</h4>
+						<p>
+							<strong>納品専用ファイル</strong><br />
+							特定の納品業務に特化したデータ管理ファイルです。CB商品データと連携して使用します。
+						</p>
+						<ul style="margin-top: 10px; font-size: 0.9rem; color: #636e72">
+							<li>納品記録の管理</li>
+							<li>配送状況の追跡</li>
+							<li>納品実績の集計</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- Quick Links -->
+			<nav class="quick-links">
+				<a href="basics.html#excel-basics" class="quick-link">
+					📚 Excel基礎知識
+				</a>
+				<a href="daily.html#daily-workflow" class="quick-link">
+					📅 毎日の作業手順
+				</a>
+				<a href="functions.html#important-functions" class="quick-link">
+					⚡ 重要な関数一覧
+				</a>
+				<a href="trouble.html#emergency" class="quick-link"> 🆘 緊急時対応 </a>
+			</nav>
+
+			<!-- Version Info -->
+			<section class="info-section" style="margin-top: 40px">
+				<h2>📋 バージョン情報</h2>
+				<div
+					style="
+						background: linear-gradient(135deg, #f1f2f6, #e8eaf0);
+						padding: 25px;
+						border-radius: 15px;
+					"
+				>
+					<div
+						style="
+							display: grid;
+							grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+							gap: 20px;
+						"
+					>
+						<div>
+							<h4 style="color: #2d3436; margin-bottom: 10px">📅 最終更新</h4>
+							<p>2024年7月22日</p>
+						</div>
+						<div>
+							<h4 style="color: #2d3436; margin-bottom: 10px">🏷️ バージョン</h4>
+							<p>v2.0.0</p>
+						</div>
+						<div>
+							<h4 style="color: #2d3436; margin-bottom: 10px">
+								✨ 対応システム
+							</h4>
+							<p>Excel 2019以降、Microsoft 365</p>
+						</div>
+						<div>
+							<h4 style="color: #2d3436; margin-bottom: 10px">🛠️ 動作環境</h4>
+							<p>Windows 10/11、macOS 10.15以降</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Footer -->
+			<footer class="footer">
+				<p>
+					© 2024 パン製造システム操作マニュアル |
+					<a href="basics.html" style="color: rgba(255, 255, 255, 0.8)"
+						>基礎知識</a
+					>
+					|
+					<a href="daily.html" style="color: rgba(255, 255, 255, 0.8)"
+						>日常操作</a
+					>
+					|
+					<a href="functions.html" style="color: rgba(255, 255, 255, 0.8)"
+						>関数解説</a
+					>
+					|
+					<a href="trouble.html" style="color: rgba(255, 255, 255, 0.8)"
+						>トラブル対応</a
+					>
+				</p>
+			</footer>
+		</div>
+
+		<!-- 外部JavaScript読み込み -->
+		<script src="../assets/js/script.js"></script>
+
+		<!-- ページ固有のスクリプト -->
+		<script>
+			// メインページ固有の初期化
+			document.addEventListener('DOMContentLoaded', function () {
+				// アニメーション遅延設定
+				const navCards = document.querySelectorAll('.nav-card');
+				navCards.forEach((card, index) => {
+					card.style.animationDelay = `${0.1 * (index + 1)}s`;
+				});
+
+				// ナビゲーションカードのホバー効果強化
+				navCards.forEach((card) => {
+					card.addEventListener('mouseenter', function () {
+						this.style.transform = 'translateY(-12px) scale(1.02)';
+					});
+
+					card.addEventListener('mouseleave', function () {
+						this.style.transform = 'translateY(0) scale(1)';
+					});
+				});
+
+				// 統計情報の表示（もしデータがあれば）
+				displaySystemStats();
+			});
+
+			// システム統計情報の表示
+			function displaySystemStats() {
+				const stats = {
+					totalSheets: 60,
+					totalStores: 40,
+					avgDailyOrders: 1200,
+					systemUptime: '99.8%',
+				};
+
+				// 統計情報を動的に更新する場合はここに実装
+				console.log('システム統計:', stats);
+			}
+
+			// ナビゲーション追跡
+			document.querySelectorAll('.nav-card').forEach((card) => {
+				card.addEventListener('click', function () {
+					const pageName = this.querySelector('h3').textContent;
+					console.log(`ページ移動: ${pageName}`);
+
+					// 実際の環境では、ここでアクセス解析データを送信
+					// analytics.track('page_navigation', { page: pageName });
+				});
+			});
+		</script>
+
+		<!-- SEO用の構造化データ -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "TechnicalArticle",
+				"headline": "パン製造システム操作マニュアル",
+				"description": "CB商品データ・T納品データの完全操作ガイド。40店舗対応統合管理システムのマニュアル。",
+				"author": {
+					"@type": "Organization",
+					"name": "パン製造システム開発チーム"
+				},
+				"datePublished": "2024-07-22",
+				"dateModified": "2024-07-22"
+			}
+		</script>
+	</body>
+</html>

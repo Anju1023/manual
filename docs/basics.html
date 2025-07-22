@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>基礎知識編 - パン製造システムマニュアル</title>
+		<meta
+			name="description"
+			content="パン製造システムの基礎知識とExcelの基本操作を学べる初心者向けガイドです。"
+		/>
+
+		<!-- 外部CSS読み込み -->
+		<link rel="stylesheet" href="../assets/css/style.css" />
+
+		<!-- ファビコン -->
+		<link
+			rel="icon"
+			href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔰</text></svg>"
+		/>
+	</head>
+	<body class="basics">
+		<div class="container">
+			<!-- Header -->
+			<header class="header">
+				<div class="breadcrumb">
+					<a href="index.html">🏠 トップページ</a> > <span>🔰 基礎知識編</span>
+				</div>
+				<h1>🔰 基礎知識編</h1>
+				<p>システムを安全に使うための基本知識</p>
+			</header>
+
+			<!-- Navigation -->
+			<nav class="page-nav">
+				<ul>
+					<li>
+						<a href="#system-overview" onclick="showSection('system-overview')"
+							>📋 システム概要</a
+						>
+					</li>
+					<li>
+						<a href="#excel-basics" onclick="showSection('excel-basics')"
+							>📚 Excel基礎</a
+						>
+					</li>
+					<li>
+						<a href="#safety-rules" onclick="showSection('safety-rules')"
+							>⚠️ 安全ルール</a
+						>
+					</li>
+					<li><a href="daily.html">📅 日常操作編へ</a></li>
+				</ul>
+			</nav>
+
+			<!-- Main Content -->
+			<main class="main-content">
+				<!-- System Overview Section -->
+				<section id="system-overview" class="section active">
+					<h2><span class="icon">📋</span>システム概要</h2>
+
+					<div class="tip">
+						<h4>🎯 このシステムでできること</h4>
+						<p>
+							パン製造から40店舗への納品まで、すべての工程を一つのシステムで管理できます。複雑な計算も自動で行うため、効率的で正確な業務が可能になります。
+						</p>
+					</div>
+
+					<h3>🏭 パン製造業務の全体像</h3>
+					<div class="process-flow">
+						<p>
+							<span class="step-number">1</span><strong>商品企画</strong> →
+							<span class="step-number">2</span><strong>材料発注</strong> →
+							<span class="step-number">3</span><strong>生地出し</strong> →
+							<span class="step-number">4</span><strong>成形・焼成</strong> →
+							<span class="step-number">5</span><strong>包装・ラベル</strong> →
+							<span class="step-number">6</span><strong>店舗納品</strong>
+						</p>
+					</div>
+
+					<h3>📊 システムが管理している情報</h3>
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>🍞 商品情報</h4>
+							<p>
+								商品名、売価、消費期限、生地の種類、包装方法など、商品に関するすべての基本情報を管理しています。
+							</p>
+						</div>
+
+						<div class="function-card">
+							<h4>🏪 店舗情報</h4>
+							<p>
+								40店舗の基本情報、納品スケジュール、各店舗の注文履歴などを管理しています。
+							</p>
+						</div>
+
+						<div class="function-card">
+							<h4>📦 製造計画</h4>
+							<p>
+								どの商品をいつ、どのくらい作るかの計画を自動で立てます。各店舗の需要に合わせて最適化されています。
+							</p>
+						</div>
+
+						<div class="function-card">
+							<h4>📋 材料管理</h4>
+							<p>
+								小麦粉、バター、イーストなどの材料の在庫状況と発注計画を管理しています。
+							</p>
+						</div>
+					</div>
+
+					<h3>🔄 データの流れ</h3>
+					<div
+						style="
+							background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+							padding: 25px;
+							border-radius: 15px;
+							margin: 25px 0;
+						"
+					>
+						<h4 style="color: #2d3436; margin-bottom: 15px">
+							情報がどのように連携しているか
+						</h4>
+						<ol style="color: #636e72; line-height: 1.8">
+							<li><strong>商品データ</strong>で商品の基本情報を管理</li>
+							<li><strong>各店舗シート</strong>で注文情報を入力</li>
+							<li><strong>製造数シート</strong>で必要な製造量を自動計算</li>
+							<li><strong>生地出しシート</strong>で作業スケジュールを表示</li>
+							<li><strong>発注シート</strong>で必要な材料を自動計算</li>
+						</ol>
+					</div>
+
+					<div class="warning">
+						<h4>⚠️ なぜ正確性が重要なのか</h4>
+						<p>
+							一つのデータが間違っていると、すべての関連する計算に影響します。<span
+								class="highlight"
+								>40店舗すべてに影響が及ぶ</span
+							>可能性があるため、慎重な操作が必要です。
+						</p>
+					</div>
+				</section>
+
+				<!-- Excel Basics Section -->
+				<section id="excel-basics" class="section">
+					<h2><span class="icon">📚</span>Excel基礎知識</h2>
+
+					<div class="tip">
+						<h4>💡 なぜExcelの基礎が必要なのか</h4>
+						<p>
+							このシステムはExcelで構築されているため、基本的な操作や概念を理解しておくことで、安全かつ効率的に作業ができます。
+						</p>
+					</div>
+
+					<h3>🎯 セルと参照の基本</h3>
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>📍 セルアドレス</h4>
+							<p>
+								Excelでは、縦の列をアルファベット（A、B、C...）、横の行を数字（1、2、3...）で表します。
+							</p>
+							<div class="syntax">A1 = A列の1行目<br />C5 = C列の5行目</div>
+						</div>
+
+						<div class="function-card">
+							<h4>🔗 相対参照と絶対参照</h4>
+							<p>セルをコピーした時の動作が異なります。</p>
+							<div class="syntax">
+								A1 ← 相対参照（コピー時に自動調整）<br />$A$1 ←
+								絶対参照（コピーしても変わらない）
+							</div>
+							<p>
+								<strong>重要：</strong
+								>システム内の絶対参照は変更しないでください。
+							</p>
+						</div>
+
+						<div class="function-card">
+							<h4>📊 範囲選択</h4>
+							<p>複数のセルをまとめて指定する方法です。</p>
+							<div class="syntax">
+								A1:C3 = A1からC3までの範囲<br />A:A = A列全体
+							</div>
+						</div>
+					</div>
+
+					<h3>🏷️ 名前付き範囲について</h3>
+					<div class="function-card">
+						<h4>📝 テーブル参照の便利さ</h4>
+						<p>
+							「商品データ[商品名]」のような表記は、<strong>構造化参照</strong>と呼ばれます。
+						</p>
+						<div class="syntax">
+							商品データ[商品名] = 商品データテーブルの商品名列全体
+						</div>
+						<p><strong>メリット：</strong></p>
+						<ul style="margin-top: 10px">
+							<li>データが追加されても自動で範囲が拡張される</li>
+							<li>セル番号より分かりやすい</li>
+							<li>計算式が読みやすくなる</li>
+						</ul>
+					</div>
+
+					<div class="warning">
+						<h4>⚠️ 触ってはいけない要素</h4>
+						<p>
+							以下の要素は<span class="highlight"
+								>絶対に変更しないでください</span
+							>：
+						</p>
+						<ul>
+							<li>テーブルの列名（商品名、売価など）</li>
+							<li>名前付き範囲の定義</li>
+							<li>計算式の構造</li>
+						</ul>
+					</div>
+
+					<h3>🔍 基本的な関数</h3>
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>➕ SUM（合計）</h4>
+							<div class="syntax">=SUM(A1:A10)</div>
+							<p>
+								A1からA10までの数値を合計します。製造数の合計などでよく使用されます。
+							</p>
+						</div>
+
+						<div class="function-card">
+							<h4>🔍 VLOOKUP（検索）</h4>
+							<div class="syntax">=VLOOKUP(検索値, 表, 列番号, FALSE)</div>
+							<p>
+								表から特定の値を検索します。商品名から売価を取得する際などに使用します。
+							</p>
+						</div>
+
+						<div class="function-card">
+							<h4>🔀 IF（条件分岐）</h4>
+							<div class="syntax">=IF(条件, 真の場合, 偽の場合)</div>
+							<p>
+								条件によって異なる値を表示します。「もし〜なら〜、そうでなければ〜」という処理です。
+							</p>
+						</div>
+
+						<div class="function-card">
+							<h4>📅 TODAY（今日の日付）</h4>
+							<div class="syntax">=TODAY()</div>
+							<p>
+								現在の日付を自動で表示します。納品日の計算などに使用されています。
+							</p>
+						</div>
+					</div>
+
+					<h3>🤖 VBA・マクロについて</h3>
+					<div class="function-card">
+						<h4>⚙️ 自動化の仕組み</h4>
+						<p>
+							VBA（Visual Basic for
+							Applications）は、Excelで複雑な処理を自動化するプログラミング言語です。
+						</p>
+
+						<h4 style="margin-top: 20px">📋 マクロボタンの役割</h4>
+						<ul style="margin: 10px 0">
+							<li><strong>計算の自動実行：</strong>複雑な計算を一瞬で完了</li>
+							<li>
+								<strong>データの整理：</strong>大量のデータを自動で並び替え
+							</li>
+							<li><strong>レポート作成：</strong>印刷用の表を自動生成</li>
+						</ul>
+					</div>
+
+					<div class="warning">
+						<h4>🚨 VBAの取り扱い注意事項</h4>
+						<p>VBAコードは極めて繊細です。以下の点にご注意ください：</p>
+						<ul>
+							<li><span class="highlight">コードは絶対に変更しない</span></li>
+							<li>ボタンは1回だけクリックして、処理完了まで待つ</li>
+							<li>処理中は他の操作を行わない</li>
+							<li>エラーが出た場合は、すぐに上席者に報告</li>
+						</ul>
+					</div>
+				</section>
+
+				<!-- Safety Rules Section -->
+				<section id="safety-rules" class="section">
+					<h2><span class="icon">⚠️</span>安全な操作のためのルール</h2>
+
+					<div class="important-notice">
+						<h3>🚨 最重要ルール</h3>
+						<p>
+							不明な操作は<span class="highlight">絶対に自己判断で行わない</span
+							>でください。必ず上席者に確認してから実行してください。
+						</p>
+					</div>
+
+					<h3>💾 バックアップの重要性</h3>
+					<div class="function-card">
+						<h4>📁 毎日のバックアップ</h4>
+						<p>作業開始前に必ずファイルのコピーを作成してください。</p>
+						<div class="syntax">
+							推奨命名規則：<br />CB商品データ_20240722.xlsm<br />T納品データ_20240722.xlsm
+						</div>
+
+						<h4 style="margin-top: 20px">💡 バックアップのタイミング</h4>
+						<ul>
+							<li>作業開始前（必須）</li>
+							<li>大きな変更を行う前</li>
+							<li>一日の作業終了時</li>
+							<li>週次・月次作業の前後</li>
+						</ul>
+					</div>
+
+					<h3>🚫 絶対に変更してはいけない要素</h3>
+					<div class="function-grid">
+						<div class="function-card">
+							<h4>🗂️ 商品データシート</h4>
+							<ul>
+								<li>列の構造（商品ID、商品名、売価など）</li>
+								<li>列の順序</li>
+								<li>データ形式</li>
+							</ul>
+						</div>
+
+						<div class="function-card">
+							<h4>🏪 店舗マスター</h4>
+							<ul>
+								<li>店舗の基本設定</li>
+								<li>店舗番号</li>
+								<li>リンク設定</li>
+							</ul>
+						</div>
+
+						<div class="function-card">
+							<h4>⚙️ システム設定</h4>
+							<ul>
+								<li>名前付き範囲の定義</li>
+								<li>VBAコード</li>
+								<li>数式の構造</li>
+							</ul>
+						</div>
+
+						<div class="function-card">
+							<h4>📊 テーブル構造</h4>
+							<ul>
+								<li>列の追加・削除</li>
+								<li>テーブル名の変更</li>
+								<li>データ型の変更</li>
+							</ul>
+						</div>
+					</div>
+
+					<h3>✅ 安全な操作手順</h3>
+					<div class="function-card">
+						<h4>📋 基本的な作業手順</h4>
+						<ol style="line-height: 1.8">
+							<li>
+								<strong>バックアップ作成</strong> - ファイルをコピーして保存
+							</li>
+							<li><strong>作業内容の確認</strong> - 何をするかを明確にする</li>
+							<li><strong>影響範囲の把握</strong> - どこに影響するかを理解</li>
+							<li><strong>慎重な実行</strong> - 一つずつ確認しながら進める</li>
+							<li>
+								<strong>結果の確認</strong> - 意図した通りになっているかチェック
+							</li>
+							<li><strong>保存</strong> - 問題なければファイルを保存</li>
+						</ol>
+					</div>
+
+					<h3>🆘 緊急時の対応</h3>
+					<div class="warning">
+						<h4>📞 連絡体制</h4>
+						<p>
+							以下の状況では<span class="highlight">即座に上席者に連絡</span
+							>してください：
+						</p>
+						<ul>
+							<li>エラーメッセージが表示された</li>
+							<li>計算結果が明らかにおかしい</li>
+							<li>ファイルが開けない</li>
+							<li>マクロが動作しない</li>
+							<li>データが消えた・変わった</li>
+						</ul>
+					</div>
+
+					<div class="tip">
+						<h4>💡 学習のコツ</h4>
+						<p>
+							最初は覚えることが多く感じるかもしれませんが、以下のように段階的に習得していきましょう：
+						</p>
+						<ol>
+							<li><strong>観察期間</strong>：まずは操作を見学</li>
+							<li>
+								<strong>指導下実習</strong>：上席者の指導のもとで実際に操作
+							</li>
+							<li>
+								<strong>確認付き独立</strong
+								>：一人で作業するが、重要な操作は確認を取る
+							</li>
+							<li><strong>完全独立</strong>：自信を持って一人で作業</li>
+						</ol>
+					</div>
+				</section>
+			</main>
+
+			<!-- Quick Links -->
+			<nav class="quick-links">
+				<a href="daily.html" class="quick-link"> 📅 日常操作編へ進む </a>
+				<a href="functions.html" class="quick-link"> ⚡ 関数解説を見る </a>
+				<a href="trouble.html" class="quick-link"> 🔧 トラブル対応を確認 </a>
+				<a href="index.html" class="quick-link"> 🏠 トップページに戻る </a>
+			</nav>
+
+			<!-- Footer -->
+			<footer class="footer">
+				<p>
+					基礎知識編 | 次は
+					<a href="daily.html" style="color: rgba(255, 255, 255, 0.8)"
+						>📅 日常操作編</a
+					>
+					で実際の作業手順を学びましょう
+				</p>
+			</footer>
+		</div>
+
+		<!-- 外部JavaScript読み込み -->
+		<script src="../assets/js/script.js"></script>
+
+		<!-- ページ固有のスクリプト -->
+		<script>
+			// 基礎知識編固有の初期化
+			document.addEventListener('DOMContentLoaded', function () {
+				// パンくずリスト生成
+				if (window.manualSystem) {
+					window.manualSystem.generateBreadcrumb('basics');
+				}
+
+				// 進捗表示
+				setupProgressTracking();
+
+				// 用語集のホバー効果
+				setupGlossaryTooltips();
+			});
+
+			// 進捗追跡機能
+			function setupProgressTracking() {
+				const sections = document.querySelectorAll('.section');
+				const progressIndicator = document.createElement('div');
+				progressIndicator.style.cssText = `
+                position: fixed;
+                top: 50%;
+                right: 20px;
+                transform: translateY(-50%);
+                background: rgba(255,255,255,0.9);
+                padding: 15px;
+                border-radius: 15px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                z-index: 100;
+            `;
+				progressIndicator.innerHTML = `
+                <h4 style="margin-bottom: 10px; color: #2d3436;">📖 学習進捗</h4>
+                <div id="progress-list"></div>
+            `;
+				document.body.appendChild(progressIndicator);
+
+				const progressList = document.getElementById('progress-list');
+				const sectionTitles = ['システム概要', 'Excel基礎', '安全ルール'];
+
+				sectionTitles.forEach((title, index) => {
+					const item = document.createElement('div');
+					item.style.cssText = 'margin: 5px 0; font-size: 0.9rem;';
+					item.innerHTML = `<span id="progress-${index}">⚪</span> ${title}`;
+					progressList.appendChild(item);
+				});
+
+				// セクション表示時に進捗を更新
+				const originalShowSection = window.showSection;
+				window.showSection = function (sectionId) {
+					if (originalShowSection) {
+						originalShowSection(sectionId);
+					}
+
+					const sectionIndex = [
+						'system-overview',
+						'excel-basics',
+						'safety-rules',
+					].indexOf(sectionId);
+					if (sectionIndex !== -1) {
+						document.getElementById(`progress-${sectionIndex}`).textContent =
+							'✅';
+					}
+				};
+			}
+
+			// 用語集ツールチップ
+			function setupGlossaryTooltips() {
+				const terms = {
+					VBA: 'Visual Basic for Applications - Excelで自動化処理を行うプログラミング言語',
+					マクロ: 'Excelで一連の操作を自動実行する機能',
+					構造化参照: 'テーブル内のデータを名前で参照する方法',
+					絶対参照: 'セルをコピーしても参照先が変わらない参照方式',
+				};
+
+				Object.keys(terms).forEach((term) => {
+					const regex = new RegExp(`\\b${term}\\b`, 'g');
+					document.body.innerHTML = document.body.innerHTML.replace(
+						regex,
+						`<span class="glossary-term" title="${terms[term]}" style="
+                        border-bottom: 1px dotted #74b9ff; 
+                        cursor: help;
+                        color: #0984e3;
+                    ">${term}</span>`
+					);
+				});
+			}
+		</script>
+	</body>
+</html>
